@@ -27,7 +27,11 @@ jobs:
       # .nojekyll отключает обработку Jekyll, которая иначе съедает часть файлов.
       - run: touch .nojekyll
 
+      # enablement создаёт сайт Pages через API, если он ещё не заведён.
+      # Без этого первый запуск падает на «Pages is not enabled».
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
