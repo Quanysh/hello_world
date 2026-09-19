@@ -8,8 +8,21 @@
 (() => {
   'use strict';
 
-  const LS_KEY = 'hl.wishlist';
+  const LS_KEY  = 'hl.wishlist';        // книги, которые добавил сам пользователь
+  const LS_GONE = 'hl.wishlist.gone';   // id из подборки, которые он убрал
   const COL = 'wishlist';
+
+  /* Подборка приезжает файлом из репозитория, поэтому одинаково видна
+     на статическом хостинге и в артефакте, без ручного ввода. */
+  const SEED = Array.isArray(window.WISHLIST) ? window.WISHLIST : [];
+  const RANK = { soon: 0, later: 1, someday: 2 };
+
+  /* Сначала срочное, потом по дате. При полусотне книг плоский список
+     по одной дате нечитаем, а soon это ближайшие полгода. */
+  const sortItems = list => list.slice().sort((a, b) =>
+    (RANK[a.priority] ?? 1) - (RANK[b.priority] ?? 1) ||
+    String(b.addedAt || '').localeCompare(String(a.addedAt || '')) ||
+    String(a.id).localeCompare(String(b.id)));
 
   const store = {
     mode: 'local',      // 'db' | 'local'
@@ -24,17 +37,35 @@
     writeLocal(items) {
       try { localStorage.setItem(LS_KEY, JSON.stringify(items)); } catch {}
     },
+    readGone() {
+      try { return new Set(JSON.parse(localStorage.getItem(LS_GONE) || '[]')); }
+      catch { return new Set(); }
+    },
+    writeGone(set) {
+      try { localStorage.setItem(LS_GONE, JSON.stringify([...set])); } catch {}
+    },
+
+    /* Локальный режим: подборка плюс свои книги минус то, что убрано.
+       Свои записи перекрывают подборку по id, поэтому правка книги
+       из подборки не приводит к двум карточкам. */
+    composeLocal() {
+      const gone = this.readGone();
+      const mine = this.readLocal();
+      const mineIds = new Set(mine.map(x => x.id));
+      const seed = SEED.filter(x => !gone.has(x.id) && !mineIds.has(x.id));
+      return sortItems(seed.concat(mine));
+    },
 
     /* Подключение к базе идёт в фоне: страница рисуется сразу, а когда
        (и если) база ответит, список перечитывается из неё. */
     async connect(onChange) {
-      this.items = this.readLocal();
+      this.items = this.composeLocal();
       onChange();
       let db = null;
       try { db = await window.claude?.use?.('db'); } catch {}
       if (!db) return;
       this.db = db; this.mode = 'db';
-      // первый перенос: если в базе пусто, а в браузере что-то есть
+      // первый перенос: если база пустая, кладём в неё то, что видно сейчас
       try {
         const snap = await db.collection(COL).get();
         if (snap.empty && this.items.length) {
@@ -43,10 +74,10 @@
       } catch {}
       this.unsub = db.collection(COL).orderBy('addedAt', 'desc').onSnapshot(
         snap => {
-          this.items = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
+          this.items = sortItems(snap.docs.map(d => Object.assign({ id: d.id }, d.data())));
           onChange();
         },
-        () => { this.mode = 'local'; this.items = this.readLocal(); onChange(); }
+        () => { this.mode = 'local'; this.items = this.composeLocal(); onChange(); }
       );
       onChange();
     },
@@ -55,24 +86,35 @@
       if (this.mode === 'db') {
         await this.db.collection(COL).doc(item.id).set(strip(item));
       } else {
-        this.items = [item, ...this.items];
-        this.writeLocal(this.items);
+        this.writeLocal([item, ...this.readLocal().filter(x => x.id !== item.id)]);
+        const gone = this.readGone();
+        if (gone.delete(item.id)) this.writeGone(gone);   // книгу вернули в список
+        this.items = this.composeLocal();
       }
     },
     async remove(id) {
       if (this.mode === 'db') {
         await this.db.collection(COL).doc(id).delete();
       } else {
-        this.items = this.items.filter(x => x.id !== id);
-        this.writeLocal(this.items);
+        this.writeLocal(this.readLocal().filter(x => x.id !== id));
+        if (SEED.some(x => x.id === id)) {
+          const gone = this.readGone(); gone.add(id); this.writeGone(gone);
+        }
+        this.items = this.composeLocal();
       }
     },
     async patch(id, fields) {
       if (this.mode === 'db') {
         await this.db.collection(COL).doc(id).update(fields);
       } else {
-        this.items = this.items.map(x => x.id === id ? Object.assign({}, x, fields) : x);
-        this.writeLocal(this.items);
+        const mine = this.readLocal();
+        if (mine.some(x => x.id === id)) {
+          this.writeLocal(mine.map(x => x.id === id ? Object.assign({}, x, fields) : x));
+        } else {
+          const base = SEED.find(x => x.id === id);
+          if (base) this.writeLocal([Object.assign({}, base, fields), ...mine]);
+        }
+        this.items = this.composeLocal();
       }
     },
   };
@@ -109,7 +151,7 @@
     const n = store.items.length;
     const badge = store.mode === 'db'
       ? 'Список синхронизируется между устройствами'
-      : 'Список хранится только в этом браузере';
+      : `Подборка на ${SEED.length} книг приходит с сайтом, твои книги хранятся в этом браузере`;
 
     host.innerHTML = `
       <section class="wish">
