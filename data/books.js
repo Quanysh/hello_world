@@ -108,31 +108,6 @@ window.LIBRARY = [
  },
  {
   "id": "b0005",
-  "title": "Таңдамалы шығармалар, том 1",
-  "originalTitle": "",
-  "author": "Тахауи Ахтанов",
-  "language": "ru",
-  "genres": [
-   "Классика"
-  ],
-  "tags": [],
-  "year": null,
-  "publisher": "",
-  "pages": null,
-  "isbn": "",
-  "series": null,
-  "seriesIndex": 1,
-  "shelf": "4-5",
-  "status": "unread",
-  "rating": 0,
-  "cover": "",
-  "notes": "Опознано по фото обложки: «Тахави Ахтанов, избранное, 1». Точная позиция на полке не подтверждена, стоит рядом с Джамбулом Джабаевым.",
-  "addedAt": "2026-09-19",
-  "photoSource": "cell-4-5-closeup.jpg",
-  "confidence": "high"
- },
- {
-  "id": "b0006",
   "title": "Избранные произведения",
   "originalTitle": "",
   "author": "Джамбул Джабаев",
@@ -160,7 +135,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0007",
+  "id": "b0006",
   "title": "Оян, қазақ!",
   "originalTitle": "",
   "author": "Міржақып Дулатов",
@@ -186,7 +161,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0008",
+  "id": "b0007",
   "title": "Көкжиек",
   "originalTitle": "",
   "author": "Кәкімжан Қазыбаев",
@@ -211,7 +186,7 @@ window.LIBRARY = [
   "confidence": "low"
  },
  {
-  "id": "b0009",
+  "id": "b0008",
   "title": "Жыр күмбезі",
   "originalTitle": "",
   "author": "Асқар Тоқмағамбетов",
@@ -236,7 +211,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0010",
+  "id": "b0009",
   "title": "Айвенго",
   "originalTitle": "Ivanhoe",
   "author": "Вальтер Скотт",
@@ -262,11 +237,11 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0011",
-  "title": "Название не читается",
+  "id": "b0010",
+  "title": "Таңдамалы шығармалар, том 1",
   "originalTitle": "",
-  "author": "Автор не установлен",
-  "language": "kk",
+  "author": "Тахауи Ахтанов",
+  "language": "ru",
   "genres": [
    "Классика"
   ],
@@ -276,18 +251,18 @@ window.LIBRARY = [
   "pages": null,
   "isbn": "",
   "series": null,
-  "seriesIndex": null,
+  "seriesIndex": 1,
   "shelf": "4-5",
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Оливково-зелёный переплёт, на корешке нет текста. Нужна обложка.",
+  "notes": "Опознано по фото обложки: «Тахави Ахтанов, избранное, 1». Поставлен на место пустого оливкового корешка: у книги потёртый зелёный тканевый корешок без текста при коричневой обложке. Если на полке есть отдельная зелёная книга, запись нужно разделить.",
   "addedAt": "2026-09-19",
-  "photoSource": "cell-4-5.jpg",
-  "confidence": "low"
+  "photoSource": "cell-4-5-closeup.jpg",
+  "confidence": "high"
  },
  {
-  "id": "b0012",
+  "id": "b0011",
   "title": "Қызыл қалқан",
   "originalTitle": "",
   "author": "Ярослав Ивашкевич",
@@ -312,7 +287,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0013",
+  "id": "b0012",
   "title": "Сырлы наз",
   "originalTitle": "",
   "author": "Тәкен Әлімқұлов",
@@ -337,7 +312,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0014",
+  "id": "b0013",
   "title": "Сахара қызы",
   "originalTitle": "",
   "author": "Әди Шәріпов",
@@ -362,8 +337,8 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0015",
-  "title": "Название не читается",
+  "id": "b0014",
+  "title": "Уақыт",
   "originalTitle": "",
   "author": "Бекежан Тілегенов",
   "language": "kk",
@@ -381,13 +356,13 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Название набрано красным поверх тёмного, с корешка не читается. Нужна обложка.",
+  "notes": "Опознано по фото обложки. «Уақыт» - «Время».",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "low"
+  "confidence": "high"
  },
  {
-  "id": "b0016",
+  "id": "b0015",
   "title": "Сол жылдарда",
   "originalTitle": "",
   "author": "Сәкен Сейфуллин",
@@ -413,7 +388,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0017",
+  "id": "b0016",
   "title": "Атамекен",
   "originalTitle": "",
   "author": "Қабдеш Жұмаділов",
@@ -438,7 +413,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0018",
+  "id": "b0017",
   "title": "Алаштың Алатау батыры",
   "originalTitle": "",
   "author": "Автор не установлен",
@@ -464,7 +439,7 @@ window.LIBRARY = [
   "confidence": "low"
  },
  {
-  "id": "b0019",
+  "id": "b0018",
   "title": "Отырардан жеткен сый",
   "originalTitle": "",
   "author": "Әнуар Әлімжанов",
@@ -489,7 +464,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0020",
+  "id": "b0019",
   "title": "Қылмыс пен жаза",
   "originalTitle": "Преступление и наказание",
   "author": "Ф. М. Достоевский",
@@ -514,7 +489,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0021",
+  "id": "b0020",
   "title": "Қызыл мен қара",
   "originalTitle": "Красное и чёрное",
   "author": "Стендаль",
@@ -539,7 +514,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0022",
+  "id": "b0021",
   "title": "Шайқалған шаңырақ",
   "originalTitle": "",
   "author": "Автор не установлен",
@@ -564,7 +539,7 @@ window.LIBRARY = [
   "confidence": "low"
  },
  {
-  "id": "b0023",
+  "id": "b0022",
   "title": "Даладағы дабыл",
   "originalTitle": "",
   "author": "Мұхамеджан Қаратаев",
@@ -589,7 +564,7 @@ window.LIBRARY = [
   "confidence": "low"
  },
  {
-  "id": "b0024",
+  "id": "b0023",
   "title": "Бес ғасыр жырлайды, том 2",
   "originalTitle": "",
   "author": "Антология",
@@ -615,7 +590,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0025",
+  "id": "b0024",
   "title": "Ежелгі Грекия мифтері мен аңыздары",
   "originalTitle": "",
   "author": "Н. А. Кун",
@@ -641,7 +616,7 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0026",
+  "id": "b0025",
   "title": "Алмас қылыш",
   "originalTitle": "",
   "author": "Мұхтар Мағауин",
