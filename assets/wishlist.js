@@ -128,7 +128,7 @@
   function itemHTML(it) {
     const fake = { id: it.id, title: it.title, author: it.author || '' };
     return `<article class="wish-card">
-      <div class="wish-cover">${window.HL.coverHTML(fake)}</div>
+      <div class="wish-cover">${window.HL.coverHTML(fake, 'mini')}</div>
       <div class="wish-body">
         <h3>${esc(it.title)}</h3>
         <div class="wish-author">${esc(it.author || 'Автор не указан')}</div>

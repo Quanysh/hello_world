@@ -99,9 +99,26 @@
 
   /* ---------- рендер: карточка / корешок ---------- */
 
-  function coverHTML(b, big) {
+  /* Инициалы для маленькой обложки. На 62px название не читается ни при
+     каком кегле: остаток ширины после полей вмещает полтора символа,
+     и заголовок разваливается на обрезанные слоги. */
+  function monogram(b) {
+    const words = String(b.author || b.title || '').trim().split(/\s+/)
+      .filter(w => /\p{L}/u.test(w));
+    if (!words.length) return '';
+    const first = words[0].match(/\p{L}/u)[0];
+    if (words.length === 1) return first.toUpperCase();
+    return (first + words[words.length - 1].match(/\p{L}/u)[0]).toUpperCase();
+  }
+
+  function coverHTML(b, mode) {
     const img = b.cover ? `<img src="${esc(b.cover)}" alt="" loading="lazy"
         onerror="this.remove()">` : '';
+    if (mode === 'mini') {
+      return `<div class="cover cover-mini" style="${coverVars(b)}"
+        title="${esc(b.title)}" aria-hidden="true">${img}
+        <span class="c-mono">${esc(monogram(b))}</span></div>`;
+    }
     return `<div class="cover" style="${coverVars(b)}">${img}
       <div class="c-title">${esc(b.title)}</div>
       <div class="c-author">${esc(b.author)}</div></div>`;
