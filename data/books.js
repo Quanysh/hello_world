@@ -128,16 +128,18 @@ window.LIBRARY = [
  },
  {
   "id": "b0006",
-  "title": "Сборник",
-  "author": "Жамбыл Жабаев",
-  "language": "kk",
+  "title": "Избранные произведения",
+  "author": "Джамбул Джабаев",
+  "language": "ru",
   "genres": [
    "Поэзия",
    "Классика"
   ],
-  "tags": [],
-  "year": null,
-  "publisher": "",
+  "tags": [
+   "с дарственной надписью"
+  ],
+  "year": 1980,
+  "publisher": "Жазушы",
   "pages": null,
   "isbn": "",
   "series": null,
@@ -146,10 +148,10 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Коричневый переплёт с орнаментом, точное название не читается.",
+  "notes": "Изд-во «Жазушы», Алма-Ата, 1980. АН КазССР, Институт литературы и искусства им. М. О. Ауэзова. На титуле дарственная надпись от 5 февраля 1981 года. Казахское написание имени - Жамбыл Жабаев.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "low"
+  "confidence": "high"
  },
  {
   "id": "b0007",
@@ -202,7 +204,7 @@ window.LIBRARY = [
  },
  {
   "id": "b0009",
-  "title": "Название не читается",
+  "title": "Жыр күмбезі",
   "author": "Асқар Тоқмағамбетов",
   "language": "kk",
   "genres": [
@@ -219,10 +221,10 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "На корешке виден только автор. Нужно фото обложки.",
+  "notes": "",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "low"
+  "confidence": "high"
  },
  {
   "id": "b0010",
@@ -421,7 +423,7 @@ window.LIBRARY = [
  },
  {
   "id": "b0018",
-  "title": "Название не читается",
+  "title": "Атамекен",
   "author": "Қабдеш Жұмаділов",
   "language": "kk",
   "genres": [
@@ -438,10 +440,10 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Виден только автор.",
+  "notes": "",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "low"
+  "confidence": "high"
  },
  {
   "id": "b0019",
@@ -518,9 +520,9 @@ window.LIBRARY = [
  },
  {
   "id": "b0022",
-  "title": "Название не читается",
-  "author": "Ф. Достоевский",
-  "language": "ru",
+  "title": "Қылмыс пен жаза",
+  "author": "Ф. М. Достоевский",
+  "language": "kk",
   "genres": [
    "Классика"
   ],
@@ -535,10 +537,11 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Автор прочитан предположительно.",
+  "notes": "Издание на казахском языке.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "low"
+  "confidence": "high",
+  "originalTitle": "Преступление и наказание"
  },
  {
   "id": "b0023",
@@ -562,7 +565,8 @@ window.LIBRARY = [
   "notes": "Издание на казахском языке.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "high"
+  "confidence": "high",
+  "originalTitle": "Красное и чёрное"
  },
  {
   "id": "b0024",

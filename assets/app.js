@@ -32,7 +32,7 @@
     }, b);
     o.authorSort = o.authorSort || toSortName(o.author);
     o._hay = fold([o.title, o.originalTitle, o.author, o.publisher, o.series,
-                   o.genres.join(' '), o.tags.join(' '), o.isbn, o.year].join(' '));
+                   o.genres.join(' '), o.tags.join(' '), o.isbn, o.year, o.notes].join(' '));
     return o;
   }
 
