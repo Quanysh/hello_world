@@ -195,7 +195,7 @@ body::after {
 }
 .header-row {
   display: flex; align-items: center; gap: 14px;
-  padding-block: 16px; flex-wrap: wrap;
+  padding-block: 12px; flex-wrap: wrap;
 }
 
 .brand { display: flex; align-items: baseline; gap: 11px; margin-right: auto; min-width: 0; }
@@ -262,7 +262,7 @@ body::after {
 
 /* ---------- Фильтры: латунные бирки ---------- */
 
-.filters { padding-bottom: 16px; display: flex; flex-direction: column; gap: 10px; }
+.filters { padding-bottom: 11px; display: flex; flex-direction: column; gap: 10px; }
 
 .chips { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
 .chips::-webkit-scrollbar { height: 5px; }
@@ -314,7 +314,7 @@ body::after {
 
 .stats {
   display: flex; flex-wrap: wrap; align-items: stretch;
-  margin: 20px 0 14px;
+  margin: 11px 0 8px;
   border: 1px solid var(--brass-dim); border-radius: 3px;
   background:
     linear-gradient(180deg, rgba(255,232,186,.16), var(--plate)),
@@ -323,7 +323,7 @@ body::after {
   overflow: hidden;
 }
 .stat {
-  flex: 1 1 130px; padding: 11px 18px;
+  flex: 1 1 130px; padding: 9px 18px;
   border-right: 1px solid var(--hair-soft);
   display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
 }
@@ -342,6 +342,8 @@ body::after {
 /* ---------- Парящие свечи ---------- */
 
 .candles { position: relative; height: 72px; pointer-events: none; }
+.candles.is-tight { height: clamp(26px, 3.6vh, 54px); }
+.candles.is-tight i { animation-duration: 8s; }
 .candles i {
   position: absolute; bottom: 2px; left: var(--x);
   width: 8px; height: var(--h, 24px); border-radius: 2px 2px 1px 1px;
@@ -444,14 +446,26 @@ body::after {
   padding-top: 6px;
 }
 
-/* «Вся стенка»: корешки ужимаются до ширины экрана, названия уходят.
-   Иначе 532 книги требуют 10 600px линейной полки при читаемом кегле. */
-.wall.is-fit { min-width: 0; }
-.wall.is-fit .wc-spine { width: auto; flex: 1 1 0; min-width: 2px; }
+/* «Вся стенка», режим по умолчанию: все 24 ячейки видны целиком.
+   Корешки ужимаются до ширины экрана, названия уходят - 532 книги
+   требуют 10 600px линейной полки при читаемом кегле. Полка ниже,
+   чтобы в окно влезали и все шесть рядов, а не только два.
+   Название книги под курсором показывает всплывающая подсказка. */
+.wall.is-fit { min-width: 0 !important; gap: 5px; padding: 8px; }
+.wall.is-fit .wc-spine { width: auto; flex: 1 1 0; min-width: 2px; cursor: pointer; }
 .wall.is-fit .wc-spine .t { display: none; }
 .wall.is-fit .wc-spine::before { height: 2px; }
-.wall.is-fit .wc-shelf { height: 150px; }
-.wall.is-fit .wc-spine:hover { transform: translateY(-6px); }
+/* Высота полки выводится из окна так, чтобы все шесть рядов легли
+   под шапку: 16vh минус постоянная часть (шапка, табличка, свечи,
+   торцы полок и зазоры). На большом мониторе ряды разжимаются. */
+.wall.is-fit .wc-shelf { height: clamp(46px, calc(16vh - 68px), 150px); padding: 7px 7px 0; }
+.wall.is-fit .wc-foot { padding: 4px 8px; }
+.wall.is-fit .wc-id { font-size: 11.5px; }
+.wall.is-fit .wc-n { font-size: 10px; }
+.wall.is-fit .wc-spine:hover { transform: translateY(-5px); }
+
+/* В обзорном режиме свечи и табличка занимают меньше высоты. */
+.wall.is-fit-scope .candles { height: 48px; }
 
 /* Торец полки: по нему выгравирован номер ячейки. */
 .wc-foot {
@@ -649,7 +663,7 @@ dialog#detail::backdrop { background: rgba(8,5,2,.72); backdrop-filter: blur(3px
 .empty .big { font-family: var(--display); font-weight: 600; font-size: 30px; color: var(--brass); margin-bottom: 6px; }
 
 footer {
-  margin: 52px 0 36px; padding-top: 18px; border-top: 1px solid var(--hair-soft);
+  margin: 26px 0 30px; padding-top: 14px; border-top: 1px solid var(--hair-soft);
   font-family: var(--book); font-size: 15px; color: var(--on-wood-2);
   display: flex; gap: 16px; flex-wrap: wrap;
 }

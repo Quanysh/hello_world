@@ -16,7 +16,7 @@
     status: '',
     cell: '',
     lowOnly: false,
-    fitWall: localStorage.getItem('hl.fitWall') === '1',
+    fitWall: localStorage.getItem('hl.fitWall') !== '0',
     sort: 'author',
     view: localStorage.getItem('hl.view') || 'wall'
   };
@@ -151,7 +151,7 @@
   /* Свечи Большого зала: парят над стеллажом, у каждой свой ритм. */
   function candlesHTML() {
     const at = [7, 19, 30, 43, 55, 68, 80, 91];
-    return `<div class="candles" aria-hidden="true">${at.map((x, i) =>
+    return `<div class="candles${state.fitWall ? ' is-tight' : ''}" aria-hidden="true">${at.map((x, i) =>
       `<i style="--x:${x}%;--h:${18 + (i * 7) % 15}px;--d:-${(i * 0.9).toFixed(1)}s"></i>`).join('')}</div>`;
   }
 
