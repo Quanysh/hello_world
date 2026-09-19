@@ -15,6 +15,8 @@
   --board-1:     #5a3819;   /* лицевая кромка полки */
   --board-2:     #2a180d;
   --back:        #150c05;   /* задняя стенка ячейки */
+  --on-wood:     #f7ecd4;      /* текст прямо по дереву, в обеих темах */
+  --on-wood-2:   rgba(247,236,212,.74);
   --brass:       #c9a14a;
   --brass-dim:   #8a6c32;
   --parch:       #241a10;   /* «бумажные» панели: ночью это тёмная кожа */
@@ -199,11 +201,11 @@ body::after {
 .brand { display: flex; align-items: baseline; gap: 11px; margin-right: auto; min-width: 0; }
 .brand h1 {
   font-family: var(--display); font-size: 31px; font-weight: 600;
-  letter-spacing: .01em; margin: 0; white-space: nowrap; color: var(--brass);
-  text-shadow: 0 1px 0 rgba(0,0,0,.6), 0 -1px 0 rgba(255,220,160,.12);
+  letter-spacing: .01em; margin: 0; white-space: nowrap; color: var(--on-wood);
+  text-shadow: 0 2px 3px rgba(0,0,0,.75), 0 -1px 0 rgba(255,228,180,.18);
 }
 .brand .count {
-  font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap;
+  font-size: 13px; color: var(--on-wood-2); font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 
 /* Поиск: утопленная в дерево прорезь */
@@ -247,7 +249,7 @@ body::after {
   box-shadow: inset 0 2px 5px rgba(0,0,0,.34);
 }
 .segmented button {
-  border: 0; background: transparent; color: var(--ink-3);
+  border: 0; background: transparent; color: var(--ink-2);
   font-family: var(--display); font-size: 16px; font-weight: 600;
   padding: 5px 15px; border-radius: 2px; cursor: pointer; white-space: nowrap;
   transition: background .15s, color .15s;
@@ -328,12 +330,13 @@ body::after {
 .stat:last-child { border-right: 0; }
 .stat .v {
   font-family: var(--display); font-weight: 700; font-size: 27px; line-height: 1;
-  color: var(--brass); font-variant-numeric: tabular-nums;
-  text-shadow: 0 1px 0 rgba(0,0,0,.55);
+  color: var(--on-wood); font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7);
 }
 .stat .l {
-  font-size: 10.5px; color: var(--ink-3);
+  font-size: 11px; color: var(--on-wood-2);
   text-transform: uppercase; letter-spacing: .12em;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
 
 /* ---------- Парящие свечи ---------- */
@@ -367,9 +370,9 @@ body::after {
   display: grid; grid-template-columns: repeat(var(--cols, 4), 1fr);
   gap: 7px; padding: 12px;
   /* «Крупно»: стеллаж шире экрана, но прокрутка одна на всю стенку,
-     а не по одной в каждой из 21 ячейки. Пустое место справа на неполных
-     полках выглядит правдивее плотной набивки. */
-  min-width: 3120px;
+     а не по одной в каждой из 21 ячейки. Конкретную ширину ставит
+     renderWall по самой полной полке текущей выборки. */
+  min-width: 900px;
   border-radius: 3px;
   background-color: var(--oak-2);
   background-image:
@@ -476,8 +479,8 @@ body::after {
 
 .shelf-group { margin-bottom: 36px; }
 .shelf-head { display: flex; align-items: baseline; gap: 11px; margin-bottom: 10px; }
-.shelf-head h3 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; color: var(--brass); }
-.shelf-head span { font-size: 12px; color: var(--ink-3); }
+.shelf-head h3 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; color: var(--on-wood); }
+.shelf-head span { font-size: 13px; color: var(--on-wood-2); }
 .shelf {
   display: flex; align-items: flex-end; gap: 3px;
   padding: 28px 18px 0; overflow-x: auto; min-height: 240px;
@@ -647,7 +650,7 @@ dialog#detail::backdrop { background: rgba(8,5,2,.72); backdrop-filter: blur(3px
 
 footer {
   margin: 52px 0 36px; padding-top: 18px; border-top: 1px solid var(--hair-soft);
-  font-family: var(--book); font-size: 14px; color: var(--ink-3);
+  font-family: var(--book); font-size: 15px; color: var(--on-wood-2);
   display: flex; gap: 16px; flex-wrap: wrap;
 }
 footer kbd { font: 500 11px/1 var(--mono); border: 1px solid var(--hair);
@@ -681,3 +684,43 @@ footer kbd { font: 500 11px/1 var(--mono); border: 1px solid var(--hair);
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* ---------- Подсказки при наборе ---------- */
+
+.suggest {
+  position: absolute; z-index: 60; left: 0; right: 0; top: calc(100% + 6px);
+  max-height: 60vh; overflow-y: auto;
+  border: 1px solid var(--brass-dim); border-radius: 3px;
+  background-color: var(--parch);
+  background-image: linear-gradient(180deg, rgba(255,232,190,.06), transparent 40%);
+  box-shadow: 0 24px 48px -18px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,236,200,.18);
+}
+.sg-row {
+  display: flex; align-items: center; gap: 11px; width: 100%;
+  padding: 10px 14px; border: 0; background: none; cursor: pointer;
+  text-align: left; font: inherit; color: var(--ink);
+  border-bottom: 1px solid var(--hair-soft);
+}
+.sg-row:last-of-type { border-bottom: 0; }
+.sg-row:hover, .sg-row.is-active { background: rgba(201,161,74,.16); }
+.sg-dot {
+  flex: 0 0 auto; width: 7px; height: 30px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--c1), var(--c2));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+}
+.sg-text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.sg-title {
+  font-family: var(--book); font-size: 16px; font-weight: 600; line-height: 1.2;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sg-sub {
+  font-size: 12.5px; color: var(--ink-3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sg-empty, .sg-more {
+  padding: 12px 14px; font-family: var(--book); font-size: 14px; color: var(--ink-3);
+}
+.sg-more { border-top: 1px solid var(--hair-soft); }
+
+/* Одна найденная книга не должна раздуваться на всю полку. */
+.wall.is-fit .wc-spine { max-width: 34px; }

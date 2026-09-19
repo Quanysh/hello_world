@@ -156,6 +156,7 @@
   }
 
   function renderWall(list) {
+    const filtering = !!(state.q || state.genres.size || state.lang || state.status || state.lowOnly);
     const scroll = el('div', 'wall-scroll');
     const box = el('div', 'wall' + (state.fitWall ? ' is-fit' : ''));
     box.style.setProperty('--cols', MAP.cols);
@@ -172,11 +173,20 @@
           <div class="wc-foot">
             <button class="wc-id" data-cell="${id}"
               title="Показать полку ${c}-${r} целиком">${c}-${r}</button>
-            <span class="wc-n">${books.length ? books.length + ' ' + plural(books.length, 'книга', 'книги', 'книг')
-              : isEmpty ? 'декор' : 'не оцифровано'}</span></div>`;
+            <span class="wc-n">${
+              books.length ? books.length + ' ' + plural(books.length, 'книга', 'книги', 'книг')
+              : isEmpty ? 'декор'
+              : filtering ? 'нет совпадений'
+              : 'не оцифровано'}</span></div>`;
         box.append(cell);
       }
     }
+    /* Ширина стеллажа считается от самой полной полки в текущей выборке:
+       при поиске по одной книге незачем держать шкаф на 3000px. */
+    const maxPer = Math.max(0, ...[...byCell.values()].map(a => a.length));
+    const cellW = Math.max(200, Math.min(900, maxPer * 25 + 26));
+    box.style.minWidth = (cellW * MAP.cols + (MAP.cols + 1) * 7 + 24) + 'px';
+
     scroll.append(box);
     const frag = document.createDocumentFragment();
     frag.append(el('div', '', candlesHTML()).firstElementChild, scroll);
@@ -321,6 +331,53 @@
       langs.map(l => `<option value="${esc(l)}">${esc(LANG_LABEL[l] || l)}</option>`).join('');
   }
 
+  /* ---------- подсказки при наборе ----------
+     Корешок обрезает длинные названия, поэтому при вводе показываем
+     полное название, автора и место на стеллаже. */
+
+  const suggest = { items: [], active: -1 };
+
+  function renderSuggest() {
+    const box = $('#suggest');
+    const terms = fold(state.q).split(' ').filter(Boolean);
+    if (terms.length === 0 || fold(state.q).length < 2) {
+      box.hidden = true; suggest.items = []; suggest.active = -1; return;
+    }
+    // сначала те, у кого совпало начало названия, потом остальные
+    const hit = BOOKS.filter(b => terms.every(t => b._hay.includes(t)));
+    const head = fold(state.q);
+    hit.sort((a, b) => {
+      const ra = fold(a.title).startsWith(head) ? 0 : fold(a.author).startsWith(head) ? 1 : 2;
+      const rb = fold(b.title).startsWith(head) ? 0 : fold(b.author).startsWith(head) ? 1 : 2;
+      return ra - rb || a.title.localeCompare(b.title, 'ru');
+    });
+    suggest.items = hit.slice(0, 8);
+    suggest.active = -1;
+    if (!suggest.items.length) {
+      box.innerHTML = `<div class="sg-empty">Ничего не найдено</div>`;
+    } else {
+      box.innerHTML = suggest.items.map((b, i) => `
+        <button class="sg-row" data-id="${b.id}" data-i="${i}">
+          <span class="sg-dot" style="${coverVars(b)}"></span>
+          <span class="sg-text">
+            <span class="sg-title">${esc(b.title)}</span>
+            <span class="sg-sub">${esc(b.author)}${b.shelf ? ' · ' + esc(cellLabel(b.shelf)) : ''}</span>
+          </span>
+        </button>`).join('') +
+        (hit.length > 8 ? `<div class="sg-more">и ещё ${hit.length - 8}</div>` : '');
+    }
+    box.hidden = false;
+  }
+
+  function moveSuggest(step) {
+    if (!suggest.items.length) return;
+    suggest.active = (suggest.active + step + suggest.items.length) % suggest.items.length;
+    $('#suggest').querySelectorAll('.sg-row').forEach((r, i) =>
+      r.classList.toggle('is-active', i === suggest.active));
+  }
+
+  function closeSuggest() { $('#suggest').hidden = true; suggest.active = -1; }
+
   /* ---------- экспорт ---------- */
 
   function exportCSV() {
@@ -336,7 +393,21 @@
   /* ---------- события ---------- */
 
   function wire() {
-    $('#q').addEventListener('input', e => { state.q = e.target.value; paint(); });
+    $('#q').addEventListener('input', e => { state.q = e.target.value; renderSuggest(); paint(); });
+    $('#q').addEventListener('focus', () => { if (state.q) renderSuggest(); });
+    $('#q').addEventListener('blur', () => setTimeout(closeSuggest, 140));
+    $('#q').addEventListener('keydown', e => {
+      if ($('#suggest').hidden) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); moveSuggest(1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); moveSuggest(-1); }
+      else if (e.key === 'Enter' && suggest.active >= 0) {
+        e.preventDefault(); openBook(suggest.items[suggest.active].id); closeSuggest();
+      } else if (e.key === 'Escape') { closeSuggest(); }
+    });
+    $('#suggest').addEventListener('mousedown', e => {
+      const row = e.target.closest('[data-id]');
+      if (row) { e.preventDefault(); openBook(row.dataset.id); closeSuggest(); }
+    });
 
     $('#genres').addEventListener('click', e => {
       const b = e.target.closest('[data-genre]'); if (!b) return;
