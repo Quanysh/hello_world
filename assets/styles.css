@@ -9,12 +9,12 @@
   --wall-1:      #2b1e13;   /* стеновая панель */
   --wall-2:      #1d1409;   /* стык между панелями */
   --floor:       #1a1108;
-  --oak-1:       #7a5430;   /* торец стеллажа, светлая грань */
-  --oak-2:       #593a1f;   /* тело стеллажа */
-  --oak-3:       #3c2614;   /* тень внутри */
-  --board-1:     #8d6038;   /* лицевая кромка полки */
-  --board-2:     #5e3d21;
-  --back:        #140d06;   /* задняя стенка ячейки */
+  --oak-1:       #6b4526;   /* торец стеллажа, светлая грань */
+  --oak-2:       #3d2614;   /* тело стеллажа */
+  --oak-3:       #241505;   /* тень внутри */
+  --board-1:     #5a3819;   /* лицевая кромка полки */
+  --board-2:     #2a180d;
+  --back:        #150c05;   /* задняя стенка ячейки */
   --brass:       #c9a14a;
   --brass-dim:   #8a6c32;
   --parch:       #241a10;   /* «бумажные» панели: ночью это тёмная кожа */
@@ -31,6 +31,8 @@
   --glow-warm:   rgba(255,186,90,.13);
   --green:       #7ea877;
   --wine:        #b0484a;
+  --board-wood:  url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'1400'%20height%3D'420'%20viewBox%3D'0%200%201400%20420'%3E%3Cdefs%3E%3Cfilter%20id%3D'w'%20x%3D'-20%25'%20y%3D'-20%25'%20width%3D'140%25'%20height%3D'140%25'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.009%200.0050'%20numOctaves%3D'4'%20seed%3D'11'%20result%3D't'%2F%3E%3CfeDisplacementMap%20in%3D'SourceGraphic'%20in2%3D't'%20scale%3D'22'%20xChannelSelector%3D'R'%20yChannelSelector%3D'G'%2F%3E%3C%2Ffilter%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.02%201.2'%20numOctaves%3D'2'%20seed%3D'15'%2F%3E%3CfeColorMatrix%20type%3D'saturate'%20values%3D'0'%2F%3E%3C%2Ffilter%3E%3ClinearGradient%20id%3D'r'%20x1%3D'0'%20y1%3D'0'%20x2%3D'0.03'%20y2%3D'1'%3E%3Cstop%20offset%3D'0.00%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'2.14%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'2.14%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'2.72%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'2.72%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'5.89%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'5.89%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'9.73%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'9.73%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'10.35%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'10.35%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'11.57%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'11.57%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'11.96%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'11.96%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'13.28%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'13.28%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'13.80%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'13.80%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'15.31%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'15.31%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'15.97%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'15.97%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'19.37%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'19.37%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'19.60%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'19.60%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.34%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.34%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.71%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.71%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'26.04%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'26.04%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'26.33%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'26.33%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'30.14%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'30.14%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'30.43%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'30.43%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'31.58%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'31.58%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'32.03%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'32.03%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'34.51%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'34.51%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'34.97%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'34.97%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'36.98%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'36.98%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'37.25%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'37.25%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'38.68%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'38.68%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'39.00%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'39.00%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'42.74%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'42.74%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'43.17%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'43.17%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'45.20%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'45.20%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'45.87%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'45.87%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'47.72%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'47.72%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'48.09%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'48.09%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'51.89%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'51.89%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'52.25%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'52.25%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'55.49%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'55.49%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'56.10%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'56.10%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'58.46%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'58.46%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'58.73%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'58.73%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'60.35%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'60.35%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'60.58%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'60.58%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'62.67%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'62.67%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'63.14%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'63.14%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'66.48%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'66.48%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'67.17%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'67.17%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'68.63%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'68.63%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'69.35%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'69.35%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'71.43%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'71.43%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'71.91%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'71.91%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'73.72%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'73.72%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'74.00%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'74.00%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.97%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.97%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'78.36%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'78.36%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'82.35%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'82.35%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'82.79%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'82.79%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'84.28%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'84.28%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'84.54%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'84.54%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'85.95%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'85.95%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'86.26%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'86.26%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'90.18%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'90.18%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'90.42%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'90.42%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'93.29%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'93.29%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'93.71%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'93.71%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'95.06%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'95.06%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'95.75%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'95.75%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'99.68%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'99.68%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%2326170a'%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D's'%20x1%3D'0'%20y1%3D'0'%20x2%3D'0'%20y2%3D'1'%3E%3Cstop%20offset%3D'0%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.10'%2F%3E%3Cstop%20offset%3D'38%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.04'%2F%3E%3Cstop%20offset%3D'62%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.06'%2F%3E%3Cstop%20offset%3D'100%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.16'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'1400'%20height%3D'420'%20fill%3D'%23452b14'%2F%3E%3Cg%20filter%3D'url(%23w)'%3E%3Crect%20x%3D'-120'%20y%3D'-120'%20width%3D'1640'%20height%3D'660'%20fill%3D'url(%23r)'%2F%3E%3C%2Fg%3E%3Crect%20width%3D'1400'%20height%3D'420'%20filter%3D'url(%23f)'%20opacity%3D'.10'%2F%3E%3Crect%20width%3D'1400'%20height%3D'420'%20fill%3D'url(%23s)'%2F%3E%3C%2Fsvg%3E");
+  --post-wood:   url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'420'%20height%3D'1400'%20viewBox%3D'0%200%20420%201400'%3E%3Cdefs%3E%3Cfilter%20id%3D'w'%20x%3D'-20%25'%20y%3D'-20%25'%20width%3D'140%25'%20height%3D'140%25'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.0050%200.009'%20numOctaves%3D'4'%20seed%3D'23'%20result%3D't'%2F%3E%3CfeDisplacementMap%20in%3D'SourceGraphic'%20in2%3D't'%20scale%3D'22'%20xChannelSelector%3D'R'%20yChannelSelector%3D'G'%2F%3E%3C%2Ffilter%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'1.2%200.02'%20numOctaves%3D'2'%20seed%3D'27'%2F%3E%3CfeColorMatrix%20type%3D'saturate'%20values%3D'0'%2F%3E%3C%2Ffilter%3E%3ClinearGradient%20id%3D'r'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'0.03'%3E%3Cstop%20offset%3D'0.00%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'2.89%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'2.89%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'3.56%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'3.56%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'6.78%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'6.78%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'8.44%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'8.44%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'8.80%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'8.80%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'12.54%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'12.54%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'13.07%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'13.07%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'14.84%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'14.84%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'15.55%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'15.55%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'19.53%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'19.53%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'19.84%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'19.84%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.41%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.41%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.87%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.87%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'25.66%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'25.66%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'26.25%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'26.25%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'28.36%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'28.36%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'28.60%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'28.60%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'30.90%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'30.90%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'31.46%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'31.46%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'35.32%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'35.32%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'35.98%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'35.98%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'38.59%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'38.59%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'38.98%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'38.98%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'40.09%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'40.09%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'40.78%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'40.78%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'44.19%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'44.19%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'44.42%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'44.42%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'47.41%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'47.41%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'47.95%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'47.95%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'50.33%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'50.33%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'50.81%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'50.81%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'53.96%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'53.96%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'54.36%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'54.36%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'56.46%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'56.46%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'57.10%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'57.10%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'61.07%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'61.07%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'61.58%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'61.58%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'64.26%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'64.26%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'64.79%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'64.79%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'66.27%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'66.27%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'66.55%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'66.55%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'69.46%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'69.46%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'70.14%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'70.14%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'73.06%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'73.06%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'73.44%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'73.44%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'74.61%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'74.61%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'75.21%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'75.21%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.02%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.02%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'77.74%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'77.74%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'79.52%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'79.52%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'79.77%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'79.77%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'83.55%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'83.55%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'84.21%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'84.21%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'87.39%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'87.39%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'87.67%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'87.67%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'91.60%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'91.60%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'92.33%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'92.33%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'95.92%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'95.92%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'96.50%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'96.50%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'99.36%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'99.36%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'99.91%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'99.91%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%2326170a'%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D's'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'0'%3E%3Cstop%20offset%3D'0%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.10'%2F%3E%3Cstop%20offset%3D'38%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.04'%2F%3E%3Cstop%20offset%3D'62%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.06'%2F%3E%3Cstop%20offset%3D'100%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.16'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'420'%20height%3D'1400'%20fill%3D'%23452b14'%2F%3E%3Cg%20filter%3D'url(%23w)'%3E%3Crect%20x%3D'-120'%20y%3D'-120'%20width%3D'660'%20height%3D'1640'%20fill%3D'url(%23r)'%2F%3E%3C%2Fg%3E%3Crect%20width%3D'420'%20height%3D'1400'%20filter%3D'url(%23f)'%20opacity%3D'.10'%2F%3E%3Crect%20width%3D'420'%20height%3D'1400'%20fill%3D'url(%23s)'%2F%3E%3C%2Fsvg%3E");
   --inlay:       rgba(0,0,0,.30);        /* утопленные поля: поиск, чипсы, селекты */
   --inlay-hi:    rgba(255,228,180,.08);  /* блик по верхней кромке */
   --plate:       rgba(0,0,0,.30);        /* затенение латунной таблички */
@@ -54,12 +56,12 @@
     --wall-1:    #ddd3c4;
     --wall-2:    #c9bda9;
     --floor:     #b8a184;
-    --oak-1:     #e0c49b;
-    --oak-2:     #c9a87e;
-    --oak-3:     #a98659;
-    --board-1:   #e8d0aa;
-    --board-2:   #c19b6d;
-    --back:      #9a7c56;
+    --oak-1:     #6b4526;
+    --oak-2:     #3d2614;
+    --oak-3:     #241505;
+    --board-1:   #5a3819;
+    --board-2:   #2a180d;
+    --back:      #150c05;
     --brass:     #7a5a18;
     --brass-dim: #8a6a24;
     --parch:     #f6edd7;
@@ -91,12 +93,12 @@
   --wall-1:    #ddd3c4;
   --wall-2:    #c9bda9;
   --floor:     #b8a184;
-  --oak-1:     #e0c49b;
-  --oak-2:     #c9a87e;
-  --oak-3:     #a98659;
-  --board-1:   #e8d0aa;
-  --board-2:   #c19b6d;
-  --back:      #9a7c56;
+  --oak-1:     #6b4526;
+  --oak-2:     #3d2614;
+  --oak-3:     #241505;
+  --board-1:   #5a3819;
+  --board-2:   #2a180d;
+  --back:      #150c05;
   --brass:     #7a5a18;
   --brass-dim: #8a6a24;
   --parch:     #f6edd7;
@@ -132,7 +134,7 @@ html { -webkit-text-size-adjust: 100%; height: 100%; }
 body {
   margin: 0; min-height: 100%;
   color: var(--ink);
-  font-family: var(--ui); font-size: 15px; line-height: 1.5;
+  font-family: var(--ui); font-size: 16px; line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--wall-1);
   /* стеновые панели с фасками, пол внизу, тёплый свет сверху, виньетка */
@@ -182,16 +184,16 @@ body::after {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
   background-color: var(--oak-3);
   background-image:
-    linear-gradient(180deg, rgba(255,226,180,.10), transparent 34%, rgba(0,0,0,.34)),
-    var(--grain-h);
-  background-size: auto, 420px 420px;
-  background-blend-mode: normal, soft-light;
+    linear-gradient(180deg, rgba(255,214,150,.13), rgba(0,0,0,.22) 34%, rgba(0,0,0,.5)),
+    var(--board-wood);
+  background-size: auto, 560px 200px;
+  background-repeat: no-repeat, repeat;
   border-bottom: 2px solid var(--brass-dim);
   box-shadow: 0 10px 26px -12px rgba(0,0,0,.8);
 }
 .header-row {
   display: flex; align-items: center; gap: 14px;
-  padding-block: 13px; flex-wrap: wrap;
+  padding-block: 16px; flex-wrap: wrap;
 }
 
 .brand { display: flex; align-items: baseline; gap: 11px; margin-right: auto; min-width: 0; }
@@ -201,7 +203,7 @@ body::after {
   text-shadow: 0 1px 0 rgba(0,0,0,.6), 0 -1px 0 rgba(255,220,160,.12);
 }
 .brand .count {
-  font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap;
+  font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 
 /* Поиск: утопленная в дерево прорезь */
@@ -258,7 +260,7 @@ body::after {
 
 /* ---------- Фильтры: латунные бирки ---------- */
 
-.filters { padding-bottom: 13px; display: flex; flex-direction: column; gap: 10px; }
+.filters { padding-bottom: 16px; display: flex; flex-direction: column; gap: 10px; }
 
 .chips { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
 .chips::-webkit-scrollbar { height: 5px; }
@@ -269,7 +271,7 @@ body::after {
   border: 1px solid var(--hair); border-radius: 2px;
   background: linear-gradient(180deg, var(--inlay-hi), transparent), var(--inlay);
   color: var(--ink-2);
-  font-family: var(--book); font-size: 14px; padding: 5px 13px;
+  font-family: var(--book); font-size: 15px; padding: 6px 14px;
   transition: color .15s, border-color .15s, background .15s;
 }
 .chip:hover { color: var(--brass); border-color: var(--brass); }
@@ -287,17 +289,17 @@ body::after {
 
 .selects { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .selects select {
-  height: 33px; padding: 0 30px 0 11px;
+  height: 40px; padding: 0 32px 0 12px;
   border: 1px solid var(--hair); border-radius: 2px;
   background-color: var(--inlay); color: var(--ink);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a4884e' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 10px center;
-  font: inherit; font-size: 13px; appearance: none; cursor: pointer;
+  font: inherit; font-size: 14px; appearance: none; cursor: pointer;
 }
 .selects select:focus { outline: 2px solid var(--brass); outline-offset: 1px; }
 .reset {
   border: 0; background: none; color: var(--brass); cursor: pointer;
-  font-family: var(--book); font-size: 14px; padding: 5px 4px;
+  font-family: var(--book); font-size: 15px; padding: 8px 4px;
   text-decoration: underline; text-underline-offset: 3px;
 }
 .cell-note {
@@ -363,14 +365,18 @@ body::after {
 
 .wall {
   display: grid; grid-template-columns: repeat(var(--cols, 4), 1fr);
-  gap: 7px; padding: 12px; min-width: 900px;
+  gap: 7px; padding: 12px;
+  /* «Крупно»: стеллаж шире экрана, но прокрутка одна на всю стенку,
+     а не по одной в каждой из 21 ячейки. Пустое место справа на неполных
+     полках выглядит правдивее плотной набивки. */
+  min-width: 3120px;
   border-radius: 3px;
   background-color: var(--oak-2);
   background-image:
-    linear-gradient(180deg, rgba(255,230,190,.16), transparent 12%, rgba(0,0,0,.30)),
-    var(--grain-h);
-  background-size: auto, 420px 420px;
-  background-blend-mode: normal, soft-light;
+    linear-gradient(180deg, rgba(255,214,150,.18), transparent 10%, rgba(0,0,0,.34)),
+    var(--post-wood);
+  background-size: auto, 200px 560px;
+  background-repeat: no-repeat, repeat;
   box-shadow:
     var(--lift),
     inset 0 2px 0 rgba(255,232,196,.26),
@@ -383,10 +389,10 @@ body::after {
   border-radius: 1px; overflow: hidden;
   background-color: var(--back);
   background-image:
-    linear-gradient(180deg, rgba(0,0,0,.62), transparent 42%),
-    var(--grain-v);
-  background-size: auto, 420px 420px;
-  background-blend-mode: normal, soft-light;
+    linear-gradient(180deg, rgba(0,0,0,.88), rgba(0,0,0,.62) 46%, rgba(0,0,0,.8)),
+    var(--post-wood);
+  background-size: auto, 200px 560px;
+  background-repeat: no-repeat, repeat;
   box-shadow: inset 0 18px 26px -10px rgba(0,0,0,.92),
               inset 0 0 44px rgba(0,0,0,.6),
               inset 0 0 0 1px rgba(0,0,0,.55);
@@ -396,14 +402,13 @@ body::after {
 .wc-shelf {
   flex: 0 0 auto; display: flex; align-items: flex-end; gap: 2px;
   padding: 14px 10px 0; height: 218px; box-sizing: border-box;
-  overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;
+  overflow: hidden;
 }
-.wc-shelf::-webkit-scrollbar { height: 5px; }
-.wc-shelf::-webkit-scrollbar-thumb { background: var(--oak-3); border-radius: 99px; }
 
 .wc-spine {
   position: relative; flex: 0 0 auto; border: 0; cursor: pointer;
   font: inherit; color: #fff; padding: 10px 0 9px; border-radius: 2px 2px 0 0;
+  width: var(--w);
   /* Округлость корешка: тень по краям, блик по центру. Плюс тень на соседа справа. */
   background:
     linear-gradient(90deg,
@@ -436,26 +441,35 @@ body::after {
   padding-top: 6px;
 }
 
+/* «Вся стенка»: корешки ужимаются до ширины экрана, названия уходят.
+   Иначе 532 книги требуют 10 600px линейной полки при читаемом кегле. */
+.wall.is-fit { min-width: 0; }
+.wall.is-fit .wc-spine { width: auto; flex: 1 1 0; min-width: 2px; }
+.wall.is-fit .wc-spine .t { display: none; }
+.wall.is-fit .wc-spine::before { height: 2px; }
+.wall.is-fit .wc-shelf { height: 150px; }
+.wall.is-fit .wc-spine:hover { transform: translateY(-6px); }
+
 /* Торец полки: по нему выгравирован номер ячейки. */
 .wc-foot {
   display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
   padding: 8px 10px;
   background-color: var(--board-2);
   background-image:
-    linear-gradient(180deg, var(--board-1), var(--board-2) 46%, rgba(0,0,0,.42)),
-    var(--grain-h);
-  background-size: auto, 420px 420px;
-  background-blend-mode: normal, soft-light;
-  box-shadow: 0 -3px 10px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,236,204,.3);
+    linear-gradient(180deg, rgba(255,216,160,.30), rgba(0,0,0,.18) 42%, rgba(0,0,0,.5)),
+    var(--board-wood);
+  background-size: auto, 560px 200px;
+  background-repeat: no-repeat, repeat;
+  box-shadow: 0 -4px 12px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,222,172,.42);
 }
 .wc-id {
   border: 0; background: none; cursor: pointer; padding: 0;
-  font: 700 12px/1 var(--mono); letter-spacing: .06em; color: #24160a;
-  text-shadow: 0 1px 0 rgba(255,232,190,.4);
+  font: 700 13px/1 var(--mono); letter-spacing: .06em; color: #f2dcae;
+  text-shadow: 0 1px 2px rgba(0,0,0,.85);
 }
-.wc-id:hover { color: #000; }
+.wc-id:hover { color: #fff3d6; }
 .wall-cell.is-blank .wc-id { pointer-events: none; opacity: .6; }
-.wc-n { font-size: 10.5px; color: rgba(36,22,10,.72); white-space: nowrap;
+.wc-n { font-size: 11.5px; color: rgba(242,220,174,.72); white-space: nowrap;
   overflow: hidden; text-overflow: ellipsis; }
 
 /* ---------- Вид «Полка» ---------- */
@@ -469,9 +483,9 @@ body::after {
   padding: 28px 18px 0; overflow-x: auto; min-height: 240px;
   border-radius: 3px 3px 0 0;
   background-color: var(--back);
-  background-image: linear-gradient(180deg, rgba(0,0,0,.6), transparent 130px), var(--grain-v);
-  background-size: auto, 420px 420px;
-  background-blend-mode: normal, soft-light;
+  background-image: linear-gradient(180deg, rgba(0,0,0,.86), rgba(0,0,0,.66) 150px), var(--post-wood);
+  background-size: auto, 200px 560px;
+  background-repeat: no-repeat, repeat;
   box-shadow: inset 0 0 30px rgba(0,0,0,.7), inset 0 0 0 1px rgba(0,0,0,.55);
 }
 .shelf::-webkit-scrollbar { height: 7px; }
@@ -479,10 +493,10 @@ body::after {
 .shelf-board {
   height: 16px; border-radius: 0 0 3px 3px;
   background-color: var(--board-2);
-  background-image: linear-gradient(180deg, var(--board-1), var(--board-2) 46%, rgba(0,0,0,.45)), var(--grain-h);
-  background-size: auto, 420px 420px;
-  background-blend-mode: normal, soft-light;
-  box-shadow: var(--lift), inset 0 1px 0 rgba(255,236,204,.34);
+  background-image: linear-gradient(180deg, rgba(255,216,160,.30), rgba(0,0,0,.2) 42%, rgba(0,0,0,.5)), var(--board-wood);
+  background-size: auto, 560px 200px;
+  background-repeat: no-repeat, repeat;
+  box-shadow: var(--lift), inset 0 1px 0 rgba(255,222,172,.42);
 }
 .spine {
   position: relative; flex: 0 0 auto; border: 0; padding: 13px 0 11px;
@@ -576,10 +590,11 @@ body::after {
 table { width: 100%; border-collapse: collapse; font-size: 14px; font-family: var(--book); }
 thead th {
   text-align: left; font-family: var(--ui); font-weight: 600; font-size: 10.5px;
-  letter-spacing: .12em; text-transform: uppercase; color: #24160a;
-  padding: 10px 14px; white-space: nowrap;
-  background-image: linear-gradient(180deg, var(--board-1), var(--board-2));
-  box-shadow: inset 0 1px 0 rgba(255,236,204,.3);
+  letter-spacing: .12em; text-transform: uppercase; color: #f2dcae;
+  padding: 12px 16px; white-space: nowrap;
+  background-image: linear-gradient(180deg, rgba(255,216,160,.22), rgba(0,0,0,.35)), var(--board-wood);
+  background-size: auto, 560px 200px;
+  box-shadow: inset 0 1px 0 rgba(255,222,172,.35);
 }
 tbody tr { border-bottom: 1px solid var(--hair-soft); cursor: pointer; }
 tbody tr:last-child { border-bottom: 0; }
@@ -646,7 +661,9 @@ footer kbd { font: 500 11px/1 var(--mono); border: 1px solid var(--hair);
   .search { order: 3; flex-basis: 100%; max-width: none; }
   .search kbd { display: none; }
   .segmented button { font-size: 15px; padding: 5px 11px; }
-  .wall { gap: 4px; padding: 7px; min-width: 820px; }
+  .wall { gap: 4px; padding: 8px; min-width: 820px; }
+  .icon-btn, .search input { height: 44px; }
+  .chip { padding: 9px 14px; }
   .wc-shelf { height: 186px; padding: 11px 7px 0; }
   .wc-foot { padding: 6px 7px; flex-direction: column; gap: 1px; }
   .wc-n { font-size: 9.5px; }
