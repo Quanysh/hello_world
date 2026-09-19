@@ -1,4 +1,12 @@
-name: Deploy to GitHub Pages
+name: Publish site to gh-pages
+
+# Источник GitHub Pages для этого репозитория - ветка gh-pages.
+# Workflow держит её в синхроне с master: собирает содержимое сайта
+# без служебных файлов и перезаписывает ветку.
+#
+# Вариант с actions/deploy-pages здесь не работает: у токена Actions
+# нет права создавать сайт Pages, первый запуск падал на
+# «Resource not accessible by integration».
 
 on:
   push:
@@ -6,34 +14,33 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: gh-pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # Сайт статический, собирать нечего. Отдаём корень репозитория как есть,
-      # .nojekyll отключает обработку Jekyll, которая иначе съедает часть файлов.
-      - run: touch .nojekyll
+      - name: Собрать содержимое сайта
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          cp -r index.html assets data README.md "$RUNNER_TEMP/site/"
+          # Без .nojekyll Jekyll выкусывает файлы и папки, начинающиеся с подчёркивания.
+          touch "$RUNNER_TEMP/site/.nojekyll"
 
-      # enablement создаёт сайт Pages через API, если он ещё не заведён.
-      # Без этого первый запуск падает на «Pages is not enabled».
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      - name: Опубликовать в gh-pages
+        run: |
+          cd "$RUNNER_TEMP/site"
+          git init -q -b gh-pages
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Публикация сайта из ${GITHUB_SHA:0:7}"
+          git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
