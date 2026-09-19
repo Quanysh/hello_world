@@ -16,6 +16,7 @@
     status: '',
     cell: '',
     lowOnly: false,
+    fitWall: localStorage.getItem('hl.fitWall') === '1',
     sort: 'author',
     view: localStorage.getItem('hl.view') || 'wall'
   };
@@ -143,7 +144,7 @@
     const tall = 74 + (h >> 3) % 22;
     return `<button class="wc-spine" data-id="${b.id}"
       title="${esc(b.author + ' — ' + b.title)}"
-      style="${coverVars(b)};width:${w}px;height:${tall}%">
+      style="${coverVars(b)};--w:${w}px;height:${tall}%">
       <span class="t">${esc(spineLabel(b))}</span></button>`;
   }
 
@@ -156,7 +157,7 @@
 
   function renderWall(list) {
     const scroll = el('div', 'wall-scroll');
-    const box = el('div', 'wall');
+    const box = el('div', 'wall' + (state.fitWall ? ' is-fit' : ''));
     box.style.setProperty('--cols', MAP.cols);
     const byCell = new Map();
     list.forEach(b => { if (!byCell.has(b.shelf)) byCell.set(b.shelf, []); byCell.get(b.shelf).push(b); });
@@ -282,6 +283,11 @@
     document.querySelectorAll('.segmented [data-view]').forEach(btn =>
       btn.setAttribute('aria-pressed', String(btn.dataset.view === state.view)));
     const lowN = BOOKS.filter(b => b.confidence === 'low').length;
+    $('#fit').hidden = state.view !== 'wall';
+    $('#fit').textContent = state.fitWall ? 'Крупно' : 'Вся стенка';
+    $('#fit').title = state.fitWall
+      ? 'Показать названия на корешках'
+      : 'Уместить все 532 книги на экран';
     $('#verify').hidden = !lowN;
     $('#verify').textContent = `Требуют проверки · ${lowN}`;
     $('#verify').setAttribute('aria-pressed', String(state.lowOnly));
@@ -365,6 +371,12 @@
 
     $('#detail').addEventListener('click', e => {
       if (e.target.closest('[data-close]') || e.target.id === 'detail') $('#detail').close();
+    });
+
+    $('#fit').addEventListener('click', () => {
+      state.fitWall = !state.fitWall;
+      localStorage.setItem('hl.fitWall', state.fitWall ? '1' : '0');
+      paint();
     });
 
     $('#verify').addEventListener('click', () => { state.lowOnly = !state.lowOnly; paint(); });
