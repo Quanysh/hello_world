@@ -147,6 +147,13 @@
       <span class="t">${esc(spineLabel(b))}</span></button>`;
   }
 
+  /* Свечи Большого зала: парят над стеллажом, у каждой свой ритм. */
+  function candlesHTML() {
+    const at = [7, 19, 30, 43, 55, 68, 80, 91];
+    return `<div class="candles" aria-hidden="true">${at.map((x, i) =>
+      `<i style="--x:${x}%;--h:${18 + (i * 7) % 15}px;--d:-${(i * 0.9).toFixed(1)}s"></i>`).join('')}</div>`;
+  }
+
   function renderWall(list) {
     const scroll = el('div', 'wall-scroll');
     const box = el('div', 'wall');
@@ -170,7 +177,9 @@
       }
     }
     scroll.append(box);
-    return scroll;
+    const frag = document.createDocumentFragment();
+    frag.append(el('div', '', candlesHTML()).firstElementChild, scroll);
+    return frag;
   }
 
   function renderShelf(list) {
