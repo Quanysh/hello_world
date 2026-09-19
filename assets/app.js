@@ -272,7 +272,11 @@
     main.innerHTML = '';
     main.dataset.view = state.view;
 
-    if (!BOOKS.length) {
+    if (state.view === 'wish') {
+      const host = el('div', 'wish-host');
+      main.append(host);
+      if (window.Wishlist) window.Wishlist.render(host);
+    } else if (!BOOKS.length) {
       main.append(el('div', 'empty', `<div class="big">Каталог пока пуст</div>
         Ниже - карта стеллажа. Ячейки заполняются по мере разбора фото.`));
       main.append(renderWall([]));
@@ -289,11 +293,18 @@
       const g = el('div', 'grid'); g.innerHTML = list.map(cardHTML).join(''); main.append(g);
     }
 
-    $('#found').textContent = `${list.length} из ${BOOKS.length}`;
+    $('#found').textContent = state.view === 'wish' ? '' : `${list.length} из ${BOOKS.length}`;
     document.querySelectorAll('.segmented [data-view]').forEach(btn =>
       btn.setAttribute('aria-pressed', String(btn.dataset.view === state.view)));
+    if (window.Wishlist) {
+      const n = window.Wishlist.count();
+      $('#tab-wish').textContent = n ? `Вишлист · ${n}` : 'Вишлист';
+    }
     const lowN = BOOKS.filter(b => b.confidence === 'low').length;
-    $('#fit').hidden = state.view !== 'wall';
+    const isWish = state.view === 'wish';
+    document.querySelector('.filters').hidden = isWish;
+    $('#stats').hidden = isWish;
+    $('#fit').hidden = isWish || state.view !== 'wall';
     $('#fit').textContent = state.fitWall ? 'Крупно' : 'Вся стенка';
     $('#fit').title = state.fitWall
       ? 'Показать названия на корешках'
@@ -468,10 +479,15 @@
     });
   }
 
+  /* Тонкий мостик для модуля вишлиста: общие обложки и перерисовка. */
+  window.HL = { esc, coverVars, coverHTML, repaint: paint };
+
   const saved = localStorage.getItem('hl.theme');
   if (saved) document.documentElement.setAttribute('data-theme', saved);
 
   buildFacets();
   wire();
   paint();
+
+  if (window.Wishlist) window.Wishlist.connect(() => paint());
 })();

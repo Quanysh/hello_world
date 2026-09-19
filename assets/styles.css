@@ -129,6 +129,10 @@
 }
 
 * { box-sizing: border-box; }
+
+/* Атрибут hidden проигрывает любому явному display, а у .filters и .stats
+   он есть. Без этого правила вишлист показывал фильтры каталога. */
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; height: 100%; }
 
 /* ---------- Комната ---------- */
@@ -738,3 +742,82 @@ footer kbd { font: 500 11px/1 var(--mono); border: 1px solid var(--hair);
 
 /* Одна найденная книга не должна раздуваться на всю полку. */
 .wall.is-fit .wc-spine { max-width: 34px; }
+
+/* ---------- Вишлист ---------- */
+
+.wish { display: flex; flex-direction: column; gap: 22px; padding-top: 18px; }
+
+.wish-form {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--brass-dim); border-radius: 3px;
+  background-color: var(--parch);
+  background-image: linear-gradient(180deg, rgba(255,232,190,.07), transparent 40%);
+  box-shadow: var(--lift), inset 0 1px 0 rgba(255,236,200,.18);
+}
+.wish-fields { display: flex; gap: 12px; flex-wrap: wrap; }
+.wish-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.wish-grow { flex: 1 1 220px; }
+.wish-field > span {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+.wish-field input, .wish-field select {
+  height: 42px; padding: 0 12px;
+  border: 1px solid var(--hair); border-radius: 2px;
+  background: var(--inlay); color: var(--ink);
+  font-family: var(--book); font-size: 16px; outline: none;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.3);
+}
+.wish-field select { appearance: none; cursor: pointer; padding-right: 30px; }
+.wish-field input:focus, .wish-field select:focus {
+  border-color: var(--brass); box-shadow: inset 0 2px 5px rgba(0,0,0,.3), 0 0 0 2px var(--hair);
+}
+.wish-field input::placeholder { color: var(--ink-3); }
+
+.wish-submit { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.wish-add {
+  height: 44px; padding: 0 22px; cursor: pointer;
+  border: 1px solid var(--brass); border-radius: 2px;
+  background: linear-gradient(180deg, var(--brass), var(--brass-dim));
+  color: #1b1206; font-family: var(--display); font-size: 17px; font-weight: 600;
+  box-shadow: 0 1px 0 rgba(255,240,200,.4) inset, 0 2px 6px rgba(0,0,0,.4);
+}
+.wish-add:hover { filter: brightness(1.08); }
+.wish-hint { font-size: 12.5px; color: var(--ink-3); }
+
+.wish-list { display: flex; flex-direction: column; gap: 12px; }
+.wish-card {
+  display: grid; grid-template-columns: 62px 1fr auto; gap: 18px; align-items: center;
+  padding: 14px 18px;
+  border: 1px solid var(--hair); border-radius: 3px;
+  background-color: var(--parch-2);
+  box-shadow: var(--lift);
+}
+.wish-cover { width: 62px; }
+.wish-body { min-width: 0; }
+.wish-body h3 {
+  margin: 0 0 3px; font-family: var(--book); font-size: 19px; font-weight: 600;
+  line-height: 1.2; text-wrap: balance;
+}
+.wish-author { font-size: 14px; color: var(--ink-2); }
+.wish-note {
+  margin: 8px 0 0; padding-left: 11px; border-left: 2px solid var(--brass-dim);
+  font-family: var(--book); font-size: 15px; color: var(--ink-2);
+}
+.wish-meta { display: flex; align-items: center; gap: 12px; margin-top: 9px; flex-wrap: wrap; }
+.wish-pri {
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  border: 1px solid currentColor; border-radius: 2px; padding: 3px 9px;
+}
+.wish-pri-soon { color: var(--brass); }
+.wish-pri-later { color: var(--ink-3); }
+.wish-pri-someday { color: var(--ink-3); opacity: .75; }
+.wish-date { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.wish-acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+@media (max-width: 720px) {
+  .wish-card { grid-template-columns: 50px 1fr; gap: 13px; }
+  .wish-cover { width: 50px; }
+  .wish-acts { grid-column: 1 / -1; justify-content: flex-start; }
+  .wish-fields { flex-direction: column; }
+}
