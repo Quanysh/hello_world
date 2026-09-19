@@ -95,7 +95,7 @@ body {
 /* ---------- Header ---------- */
 
 .site-header {
-  position: sticky; top: 0; z-index: 40;
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
   backdrop-filter: saturate(160%) blur(14px);
   background: color-mix(in srgb, var(--paper) 86%, transparent);
   border-bottom: 1px solid var(--line);
