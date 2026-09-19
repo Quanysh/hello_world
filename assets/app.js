@@ -116,18 +116,39 @@
     </button>`;
   }
 
+  /* На корешке помещается одна строка, поэтому берём самое информативное:
+     у книги без прочитанного названия - автора, у тома собрания - автора с номером. */
+  function spineLabel(b) {
+    if (b.title === 'Название не читается') return b.author;
+    const vol = b.title.match(/^Тома? ([\dIVXLC?-]+)/i);
+    if (vol && b.author !== 'Автор не установлен') return `${b.author} · ${vol[1]}`;
+    return b.title;
+  }
+
   function spineHTML(b) {
     const h = hash(b.id);
     const w = Math.max(22, Math.min(54, Math.round((b.pages || 260) / 11)));
     const tall = 150 + (h % 46);
     return `<button class="spine" data-id="${b.id}" title="${esc(b.title + ' — ' + b.author)}"
       style="${coverVars(b)};width:${w}px;height:${tall}px">
-      <span class="s-title">${esc(b.title)}</span><span class="s-mark"></span></button>`;
+      <span class="s-title">${esc(spineLabel(b))}</span><span class="s-mark"></span></button>`;
   }
 
   /* ---------- виды ---------- */
 
+  /* Корешок для вида «Стеллаж»: уже, чем на полке, но с читаемым названием. */
+  function wallSpineHTML(b) {
+    const h = hash(b.id);
+    const w = b.pages ? Math.max(20, Math.min(34, Math.round(b.pages / 18))) : 20 + h % 11;
+    const tall = 74 + (h >> 3) % 22;
+    return `<button class="wc-spine" data-id="${b.id}"
+      title="${esc(b.author + ' — ' + b.title)}"
+      style="${coverVars(b)};width:${w}px;height:${tall}%">
+      <span class="t">${esc(spineLabel(b))}</span></button>`;
+  }
+
   function renderWall(list) {
+    const scroll = el('div', 'wall-scroll');
     const box = el('div', 'wall');
     box.style.setProperty('--cols', MAP.cols);
     const byCell = new Map();
@@ -137,19 +158,19 @@
         const id = `${c}-${r}`;
         const books = byCell.get(id) || [];
         const isEmpty = (MAP.empty || []).includes(id);
-        const cell = el('button', 'wall-cell' + (books.length ? '' : ' is-blank'));
-        cell.dataset.cell = id;
-        cell.disabled = !books.length;
+        const cell = el('div', 'wall-cell' + (books.length ? '' : ' is-blank'));
         cell.innerHTML = `
-          <div class="wc-bar">${books.slice(0, 26).map(b =>
-            `<i style="${coverVars(b)};height:${58 + hash(b.id) % 26}%"></i>`).join('')}</div>
-          <div class="wc-foot"><span class="wc-id">${c}-${r}</span>
+          <div class="wc-shelf">${books.map(wallSpineHTML).join('')}</div>
+          <div class="wc-foot">
+            <button class="wc-id" data-cell="${id}"
+              title="Показать полку ${c}-${r} целиком">${c}-${r}</button>
             <span class="wc-n">${books.length ? books.length + ' ' + plural(books.length, 'книга', 'книги', 'книг')
               : isEmpty ? 'декор' : 'не оцифровано'}</span></div>`;
         box.append(cell);
       }
     }
-    return box;
+    scroll.append(box);
+    return scroll;
   }
 
   function renderShelf(list) {

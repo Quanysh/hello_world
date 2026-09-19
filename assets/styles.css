@@ -22,7 +22,15 @@
   --shadow-lg:    0 8px 20px rgba(28,25,23,.12), 0 30px 60px rgba(28,25,23,.16);
   --radius:       10px;
   --radius-lg:    16px;
-  --wood:         linear-gradient(180deg,#c9a274,#a9825a 40%,#8a6743);
+  --wood:         linear-gradient(180deg,#b98f5f,#936d45 38%,#6d4f31);
+  --room:         #ded2bc;
+  --room-floor:   #b99b73;
+  --glow-a:       rgba(255,241,206,.90);
+  --glow-b:       rgba(255,214,150,.42);
+  --vignette:     rgba(58,42,26,.46);
+  --plank:        rgba(120,92,58,.11);
+  --shaft:        rgba(255,246,219,.30);
+  --grain:        .055;
   --serif:        "Instrument Serif", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --sans:         "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --mono:         ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
@@ -47,7 +55,23 @@
     --shadow-sm:   0 1px 2px rgba(0,0,0,.4);
     --shadow-md:   0 2px 6px rgba(0,0,0,.45), 0 10px 26px rgba(0,0,0,.4);
     --shadow-lg:   0 8px 20px rgba(0,0,0,.5), 0 30px 60px rgba(0,0,0,.55);
-    --wood:        linear-gradient(180deg,#5a4530,#443322 40%,#2e231715);
+    --wood:    linear-gradient(180deg,#5a4530,#443322 40%,#2e2317);
+  --room:    #14100b;
+  --room-floor:  #2a1e13;
+  --glow-a:    rgba(255,198,112,.22);
+  --glow-b:    rgba(255,166,80,.13);
+  --vignette:  rgba(0,0,0,.74);
+  --plank:     rgba(255,214,160,.05);
+  --shaft:     rgba(255,222,160,.09);
+  --grain:     .085;
+    --room:        #14100b;
+    --room-floor:  #2a1e13;
+    --glow-a:      rgba(255,198,112,.22);
+    --glow-b:      rgba(255,166,80,.13);
+    --vignette:    rgba(0,0,0,.74);
+    --plank:       rgba(255,214,160,.05);
+    --shaft:       rgba(255,222,160,.09);
+    --grain:       .085;
   }
 }
 
@@ -69,7 +93,15 @@
   --shadow-sm:   0 1px 2px rgba(0,0,0,.4);
   --shadow-md:   0 2px 6px rgba(0,0,0,.45), 0 10px 26px rgba(0,0,0,.4);
   --shadow-lg:   0 8px 20px rgba(0,0,0,.5), 0 30px 60px rgba(0,0,0,.55);
-  --wood:        linear-gradient(180deg,#5a4530,#443322 40%,#2e2317);
+  --wood:    linear-gradient(180deg,#5a4530,#443322 40%,#2e2317);
+  --room:    #14100b;
+  --room-floor:  #2a1e13;
+  --glow-a:    rgba(255,198,112,.22);
+  --glow-b:    rgba(255,166,80,.13);
+  --vignette:  rgba(0,0,0,.74);
+  --plank:     rgba(255,214,160,.05);
+  --shaft:     rgba(255,222,160,.09);
+  --grain:     .085;
 }
 
 * { box-sizing: border-box; }
@@ -78,16 +110,37 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  min-height: 100%;
+  background-color: var(--room);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  /* Комната: свет из окна, виньетка по углам, деревянный пол внизу,
+     вертикальные стыки панелей на стене. Всё на градиентах, картинок нет. */
   background-image:
-    radial-gradient(1200px 600px at 12% -10%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 70%),
-    radial-gradient(900px 500px at 95% 0%, color-mix(in srgb, var(--gold) 7%, transparent), transparent 70%);
+    radial-gradient(1200px 780px at 16% -14%, var(--glow-a), transparent 60%),
+    radial-gradient(1000px 640px at 86% 2%, var(--glow-b), transparent 58%),
+    radial-gradient(150% 115% at 50% 34%, transparent 38%, var(--vignette) 100%),
+    linear-gradient(180deg, transparent 0 58%, var(--room-floor) 100%),
+    repeating-linear-gradient(90deg,
+      transparent 0 96px, var(--plank) 96px 97px, transparent 97px 194px);
   background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Пылинки в луче света и зерно плёнки поверх всей сцены. */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(102deg, transparent 6%, var(--shaft) 13%, transparent 27%),
+    linear-gradient(102deg, transparent 24%, var(--shaft) 28%, transparent 41%);
+}
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  opacity: var(--grain);
 }
 
 .wrap { max-width: 1280px; margin: 0 auto; padding: 0 16px; }
@@ -408,44 +461,71 @@ footer a { color: var(--accent); }
 
 /* ---------- Wall view: карта реального стеллажа ---------- */
 
+/* Стеллаж держит свои 4 колонки на любом экране: на телефоне его панорамируют,
+   иначе корешки схлопываются в нечитаемые полоски и вид теряет смысл. */
+.wall-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
+.wall-scroll::-webkit-scrollbar { height: 7px; }
+.wall-scroll::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 99px; }
+
 .wall {
   display: grid;
   grid-template-columns: repeat(var(--cols, 4), 1fr);
   gap: 5px;
   padding: 10px;
+  min-width: 860px;
   background: var(--wood);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,.14);
+  box-shadow: 0 30px 60px -24px rgba(24,14,6,.70), 0 6px 18px rgba(24,14,6,.34),
+              inset 0 0 0 1px rgba(255,236,204,.16), inset 0 2px 0 rgba(255,236,204,.12);
 }
 .wall-cell {
-  border: 0; cursor: pointer; font: inherit; color: inherit;
   background: var(--surface-2);
-  border-radius: 4px; padding: 0; overflow: hidden;
+  border-radius: 4px; overflow: hidden;
   display: flex; flex-direction: column; justify-content: flex-end;
-  min-height: 116px; text-align: left;
+  min-height: 0;
   box-shadow: inset 0 14px 22px -14px rgba(0,0,0,.45);
-  transition: outline-color .15s, background .15s;
-  outline: 2px solid transparent; outline-offset: -2px;
 }
-.wall-cell:not(:disabled):hover { outline-color: var(--accent); background: var(--surface); }
-.wall-cell:focus-visible { outline-color: var(--accent); }
-.wall-cell.is-blank { cursor: default; background: color-mix(in srgb, var(--surface-2) 60%, transparent); }
+.wall-cell.is-blank { background: color-mix(in srgb, var(--surface-2) 60%, transparent); }
 
-.wc-bar {
-  flex: 1; display: flex; align-items: flex-end; gap: 1.5px;
-  padding: 0 7px; min-height: 60px; overflow: hidden;
+.wc-shelf {
+  flex: 0 0 auto; display: flex; align-items: flex-end; gap: 2px;
+  padding: 12px 9px 0; height: 218px; box-sizing: border-box;
+  overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: thin;
 }
-.wc-bar i {
-  flex: 1 1 0; min-width: 2px; max-width: 9px;
-  border-radius: 1.5px 1.5px 0 0;
-  background: linear-gradient(90deg, rgba(0,0,0,.3), transparent 30%), var(--c1);
+.wc-shelf::-webkit-scrollbar { height: 5px; }
+.wc-shelf::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 99px; }
+
+.wc-spine {
+  flex: 0 0 auto; border: 0; cursor: pointer; font: inherit; color: #fff;
+  padding: 9px 0 8px; border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.32), transparent 24%, transparent 74%, rgba(0,0,0,.26)), var(--c1);
+  display: flex; align-items: flex-start; justify-content: center;
+  overflow: hidden; transform-origin: bottom center;
+  transition: transform .16s cubic-bezier(.2,.7,.3,1), filter .16s;
 }
+.wc-spine:hover, .wc-spine:focus-visible { transform: translateY(-9px); filter: brightness(1.12); outline: none; }
+.wc-spine:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+.wc-spine .t {
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-family: var(--serif); font-size: 11.5px; line-height: 1.05;
+  max-height: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+
 .wc-foot {
   display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
   padding: 7px 9px; border-top: 1px solid var(--line);
   background: var(--surface);
 }
-.wc-id { font: 600 12px/1 var(--mono); color: var(--ink-2); }
+.wc-id {
+  border: 0; background: none; cursor: pointer; padding: 0;
+  font: 600 12px/1 var(--mono); color: var(--ink-2);
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: var(--line-2);
+}
+.wc-id:hover { color: var(--accent); text-decoration-color: currentColor; }
+.wall-cell.is-blank .wc-id { pointer-events: none; text-decoration: none; opacity: .6; }
 .wc-n { font-size: 10.5px; color: var(--ink-3); white-space: nowrap;
   overflow: hidden; text-overflow: ellipsis; }
 .wall-cell.is-blank .wc-foot { background: var(--surface-2); }
@@ -457,9 +537,8 @@ footer a { color: var(--accent); }
 }
 
 @media (max-width: 720px) {
-  .wall { gap: 3px; padding: 6px; }
-  .wall-cell { min-height: 78px; }
-  .wc-bar { min-height: 34px; padding: 0 4px; }
+  .wall { gap: 3px; padding: 6px; min-width: 780px; }
+  .wc-shelf { height: 188px; padding: 10px 6px 0; }
   .wc-foot { padding: 5px 6px; flex-direction: column; gap: 1px; }
   .wc-n { font-size: 9.5px; }
 }
