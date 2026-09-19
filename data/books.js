@@ -5,6 +5,7 @@ window.LIBRARY = [
  {
   "id": "b0001",
   "title": "Естелік-эссе",
+  "originalTitle": "",
   "author": "Дінмұхамед Қонаев",
   "language": "kk",
   "genres": [
@@ -30,6 +31,7 @@ window.LIBRARY = [
  {
   "id": "b0002",
   "title": "Ботагөз",
+  "originalTitle": "",
   "author": "Сәбит Мұқанов",
   "language": "kk",
   "genres": [
@@ -55,6 +57,7 @@ window.LIBRARY = [
  {
   "id": "b0003",
   "title": "Живые сокровища Казахстана",
+  "originalTitle": "",
   "author": "Автор не установлен",
   "language": "ru",
   "genres": [
@@ -72,7 +75,7 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Автор на корешке не читается.",
+  "notes": "Автор на корешке не напечатан. Нужен титульный лист.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "low"
@@ -80,6 +83,7 @@ window.LIBRARY = [
  {
   "id": "b0004",
   "title": "Ұшқан ұя",
+  "originalTitle": "",
   "author": "Бауыржан Момышұлы",
   "language": "kk",
   "genres": [
@@ -105,6 +109,7 @@ window.LIBRARY = [
  {
   "id": "b0005",
   "title": "Таңдамалы шығармалар, том 1",
+  "originalTitle": "",
   "author": "Тахауи Ахтанов",
   "language": "ru",
   "genres": [
@@ -116,19 +121,20 @@ window.LIBRARY = [
   "pages": null,
   "isbn": "",
   "series": null,
-  "seriesIndex": null,
+  "seriesIndex": 1,
   "shelf": "4-5",
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Опознано по фото обложки: «Тахави Ахтанов, избранное, 1».",
+  "notes": "Опознано по фото обложки: «Тахави Ахтанов, избранное, 1». Точная позиция на полке не подтверждена, стоит рядом с Джамбулом Джабаевым.",
   "addedAt": "2026-09-19",
-  "photoSource": "cell-4-5.jpg",
+  "photoSource": "cell-4-5-closeup.jpg",
   "confidence": "high"
  },
  {
   "id": "b0006",
   "title": "Избранные произведения",
+  "originalTitle": "",
   "author": "Джамбул Джабаев",
   "language": "ru",
   "genres": [
@@ -156,6 +162,7 @@ window.LIBRARY = [
  {
   "id": "b0007",
   "title": "Оян, қазақ!",
+  "originalTitle": "",
   "author": "Міржақып Дулатов",
   "language": "kk",
   "genres": [
@@ -181,7 +188,8 @@ window.LIBRARY = [
  {
   "id": "b0008",
   "title": "Көкжиек",
-  "author": "Қозыбаев",
+  "originalTitle": "",
+  "author": "Кәкімжан Қазыбаев",
   "language": "kk",
   "genres": [
    "Современная проза"
@@ -197,7 +205,7 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Автор читается частично, жанр под вопросом.",
+  "notes": "Автор прочитан по корешку предположительно. Нужна обложка.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "low"
@@ -205,6 +213,7 @@ window.LIBRARY = [
  {
   "id": "b0009",
   "title": "Жыр күмбезі",
+  "originalTitle": "",
   "author": "Асқар Тоқмағамбетов",
   "language": "kk",
   "genres": [
@@ -229,6 +238,7 @@ window.LIBRARY = [
  {
   "id": "b0010",
   "title": "Айвенго",
+  "originalTitle": "Ivanhoe",
   "author": "Вальтер Скотт",
   "language": "kk",
   "genres": [
@@ -254,6 +264,7 @@ window.LIBRARY = [
  {
   "id": "b0011",
   "title": "Название не читается",
+  "originalTitle": "",
   "author": "Автор не установлен",
   "language": "kk",
   "genres": [
@@ -270,7 +281,7 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Тёмно-зелёный переплёт без читаемого текста. Нужно фото обложки.",
+  "notes": "Оливково-зелёный переплёт, на корешке нет текста. Нужна обложка.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "low"
@@ -278,6 +289,7 @@ window.LIBRARY = [
  {
   "id": "b0012",
   "title": "Қызыл қалқан",
+  "originalTitle": "",
   "author": "Ярослав Ивашкевич",
   "language": "kk",
   "genres": [
@@ -294,7 +306,7 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Серия «Шетел прозасы». Опознано по фото обложки.",
+  "notes": "Серия «Шетел прозасы».",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "high"
@@ -302,6 +314,7 @@ window.LIBRARY = [
  {
   "id": "b0013",
   "title": "Сырлы наз",
+  "originalTitle": "",
   "author": "Тәкен Әлімқұлов",
   "language": "kk",
   "genres": [
@@ -318,7 +331,7 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Опознано по фото обложки.",
+  "notes": "",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "high"
@@ -326,6 +339,7 @@ window.LIBRARY = [
  {
   "id": "b0014",
   "title": "Сахара қызы",
+  "originalTitle": "",
   "author": "Әди Шәріпов",
   "language": "kk",
   "genres": [
@@ -349,32 +363,8 @@ window.LIBRARY = [
  },
  {
   "id": "b0015",
-  "title": "Алмас қылыш",
-  "author": "Мұхтар Мағауин",
-  "language": "kk",
-  "genres": [
-   "Исторический роман",
-   "Классика"
-  ],
-  "tags": [],
-  "year": null,
-  "publisher": "",
-  "pages": null,
-  "isbn": "",
-  "series": null,
-  "seriesIndex": null,
-  "shelf": "4-5",
-  "status": "unread",
-  "rating": 0,
-  "cover": "",
-  "notes": "Опознано по фото обложки.",
-  "addedAt": "2026-09-19",
-  "photoSource": "cell-4-5.jpg",
-  "confidence": "high"
- },
- {
-  "id": "b0016",
   "title": "Название не читается",
+  "originalTitle": "",
   "author": "Бекежан Тілегенов",
   "language": "kk",
   "genres": [
@@ -391,14 +381,15 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Название набрано красным, с корешка не читается.",
+  "notes": "Название набрано красным поверх тёмного, с корешка не читается. Нужна обложка.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "low"
  },
  {
-  "id": "b0017",
+  "id": "b0016",
   "title": "Сол жылдарда",
+  "originalTitle": "",
   "author": "Сәкен Сейфуллин",
   "language": "kk",
   "genres": [
@@ -422,8 +413,9 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0018",
+  "id": "b0017",
   "title": "Атамекен",
+  "originalTitle": "",
   "author": "Қабдеш Жұмаділов",
   "language": "kk",
   "genres": [
@@ -446,8 +438,9 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0019",
+  "id": "b0018",
   "title": "Алаштың Алатау батыры",
+  "originalTitle": "",
   "author": "Автор не установлен",
   "language": "kk",
   "genres": [
@@ -465,14 +458,15 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "Автор с корешка не читается.",
+  "notes": "Автор на корешке не читается.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "low"
  },
  {
-  "id": "b0020",
+  "id": "b0019",
   "title": "Отырардан жеткен сый",
+  "originalTitle": "",
   "author": "Әнуар Әлімжанов",
   "language": "kk",
   "genres": [
@@ -495,32 +489,9 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0021",
-  "title": "Название не читается",
-  "author": "Автор не установлен",
-  "language": "kk",
-  "genres": [
-   "Классика"
-  ],
-  "tags": [],
-  "year": null,
-  "publisher": "",
-  "pages": null,
-  "isbn": "",
-  "series": null,
-  "seriesIndex": null,
-  "shelf": "4-5",
-  "status": "unread",
-  "rating": 0,
-  "cover": "",
-  "notes": "Тонкий кремовый корешок, текста нет. Нужно фото обложки.",
-  "addedAt": "2026-09-19",
-  "photoSource": "cell-4-5.jpg",
-  "confidence": "low"
- },
- {
-  "id": "b0022",
+  "id": "b0020",
   "title": "Қылмыс пен жаза",
+  "originalTitle": "Преступление и наказание",
   "author": "Ф. М. Достоевский",
   "language": "kk",
   "genres": [
@@ -540,12 +511,12 @@ window.LIBRARY = [
   "notes": "Издание на казахском языке.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "high",
-  "originalTitle": "Преступление и наказание"
+  "confidence": "high"
  },
  {
-  "id": "b0023",
+  "id": "b0021",
   "title": "Қызыл мен қара",
+  "originalTitle": "Красное и чёрное",
   "author": "Стендаль",
   "language": "kk",
   "genres": [
@@ -565,12 +536,12 @@ window.LIBRARY = [
   "notes": "Издание на казахском языке.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
-  "confidence": "high",
-  "originalTitle": "Красное и чёрное"
+  "confidence": "high"
  },
  {
-  "id": "b0024",
+  "id": "b0022",
   "title": "Шайқалған шаңырақ",
+  "originalTitle": "",
   "author": "Автор не установлен",
   "language": "kk",
   "genres": [
@@ -587,14 +558,15 @@ window.LIBRARY = [
   "status": "unread",
   "rating": 0,
   "cover": "",
-  "notes": "И автор, и название под вопросом.",
+  "notes": "Автор не читается, название прочитано предположительно.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "low"
  },
  {
-  "id": "b0025",
+  "id": "b0023",
   "title": "Даладағы дабыл",
+  "originalTitle": "",
   "author": "Мұхамеджан Қаратаев",
   "language": "kk",
   "genres": [
@@ -617,8 +589,9 @@ window.LIBRARY = [
   "confidence": "low"
  },
  {
-  "id": "b0026",
+  "id": "b0024",
   "title": "Бес ғасыр жырлайды, том 2",
+  "originalTitle": "",
   "author": "Антология",
   "language": "kk",
   "genres": [
@@ -642,8 +615,9 @@ window.LIBRARY = [
   "confidence": "high"
  },
  {
-  "id": "b0027",
+  "id": "b0025",
   "title": "Ежелгі Грекия мифтері мен аңыздары",
+  "originalTitle": "",
   "author": "Н. А. Кун",
   "language": "kk",
   "genres": [
@@ -662,6 +636,32 @@ window.LIBRARY = [
   "rating": 0,
   "cover": "",
   "notes": "Издание на казахском языке.",
+  "addedAt": "2026-09-19",
+  "photoSource": "cell-4-5.jpg",
+  "confidence": "high"
+ },
+ {
+  "id": "b0026",
+  "title": "Алмас қылыш",
+  "originalTitle": "",
+  "author": "Мұхтар Мағауин",
+  "language": "kk",
+  "genres": [
+   "Исторический роман",
+   "Классика"
+  ],
+  "tags": [],
+  "year": null,
+  "publisher": "",
+  "pages": null,
+  "isbn": "",
+  "series": null,
+  "seriesIndex": null,
+  "shelf": "4-5",
+  "status": "unread",
+  "rating": 0,
+  "cover": "",
+  "notes": "Опознано по фото обложки. Точная позиция на полке не подтверждена.",
   "addedAt": "2026-09-19",
   "photoSource": "cell-4-5.jpg",
   "confidence": "high"
