@@ -1,0 +1,850 @@
+/* ============================================================
+   Домашняя библиотека
+   Одна сцена: деревянная комната при свечах. Не страница с фоном,
+   а комната, в которой стоит стеллаж. Всё на CSS, картинок нет.
+   ============================================================ */
+
+:root {
+  /* --- ночная библиотека, основной мир --- */
+  --wall-1:      #2b1e13;   /* стеновая панель */
+  --wall-2:      #1d1409;   /* стык между панелями */
+  --floor:       #1a1108;
+  --oak-1:       #6b4526;   /* торец стеллажа, светлая грань */
+  --oak-2:       #3d2614;   /* тело стеллажа */
+  --oak-3:       #241505;   /* тень внутри */
+  --board-1:     #5a3819;   /* лицевая кромка полки */
+  --board-2:     #2a180d;
+  --back:        #150c05;   /* задняя стенка ячейки */
+  --on-wood:     #f7ecd4;      /* текст прямо по дереву, в обеих темах */
+  --on-wood-2:   rgba(247,236,212,.74);
+  --brass:       #c9a14a;
+  --brass-dim:   #8a6c32;
+  --parch:       #241a10;   /* «бумажные» панели: ночью это тёмная кожа */
+  --parch-2:     #1b130b;
+  --ink:         #f0e4c8;
+  --ink-2:       #c8b291;
+  --ink-3:       #8e7a5c;
+  --hair:        rgba(201,161,74,.26);
+  --hair-soft:   rgba(201,161,74,.13);
+  --candle:      rgba(255,190,96,.30);
+  --shaft:       rgba(255,224,164,.075);
+  --mote:        rgba(255,240,206,.55);
+  --vignette:    rgba(0,0,0,.80);
+  --glow-warm:   rgba(255,186,90,.13);
+  --green:       #7ea877;
+  --wine:        #b0484a;
+  --board-wood:  url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'1400'%20height%3D'420'%20viewBox%3D'0%200%201400%20420'%3E%3Cdefs%3E%3Cfilter%20id%3D'w'%20x%3D'-20%25'%20y%3D'-20%25'%20width%3D'140%25'%20height%3D'140%25'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.009%200.0050'%20numOctaves%3D'4'%20seed%3D'11'%20result%3D't'%2F%3E%3CfeDisplacementMap%20in%3D'SourceGraphic'%20in2%3D't'%20scale%3D'22'%20xChannelSelector%3D'R'%20yChannelSelector%3D'G'%2F%3E%3C%2Ffilter%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.02%201.2'%20numOctaves%3D'2'%20seed%3D'15'%2F%3E%3CfeColorMatrix%20type%3D'saturate'%20values%3D'0'%2F%3E%3C%2Ffilter%3E%3ClinearGradient%20id%3D'r'%20x1%3D'0'%20y1%3D'0'%20x2%3D'0.03'%20y2%3D'1'%3E%3Cstop%20offset%3D'0.00%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'2.14%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'2.14%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'2.72%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'2.72%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'5.89%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'5.89%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'9.73%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'9.73%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'10.35%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'10.35%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'11.57%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'11.57%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'11.96%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'11.96%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'13.28%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'13.28%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'13.80%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'13.80%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'15.31%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'15.31%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'15.97%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'15.97%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'19.37%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'19.37%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'19.60%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'19.60%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.34%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.34%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.71%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.71%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'26.04%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'26.04%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'26.33%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'26.33%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'30.14%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'30.14%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'30.43%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'30.43%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'31.58%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'31.58%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'32.03%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'32.03%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'34.51%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'34.51%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'34.97%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'34.97%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'36.98%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'36.98%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'37.25%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'37.25%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'38.68%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'38.68%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'39.00%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'39.00%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'42.74%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'42.74%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'43.17%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'43.17%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'45.20%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'45.20%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'45.87%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'45.87%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'47.72%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'47.72%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'48.09%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'48.09%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'51.89%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'51.89%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'52.25%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'52.25%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'55.49%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'55.49%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'56.10%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'56.10%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'58.46%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'58.46%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'58.73%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'58.73%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'60.35%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'60.35%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'60.58%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'60.58%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'62.67%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'62.67%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'63.14%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'63.14%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'66.48%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'66.48%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'67.17%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'67.17%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'68.63%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'68.63%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'69.35%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'69.35%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'71.43%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'71.43%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'71.91%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'71.91%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'73.72%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'73.72%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'74.00%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'74.00%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.97%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.97%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'78.36%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'78.36%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'82.35%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'82.35%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'82.79%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'82.79%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'84.28%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'84.28%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'84.54%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'84.54%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'85.95%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'85.95%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'86.26%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'86.26%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'90.18%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'90.18%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'90.42%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'90.42%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'93.29%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'93.29%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'93.71%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'93.71%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'95.06%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'95.06%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'95.75%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'95.75%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'99.68%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'99.68%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%2326170a'%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D's'%20x1%3D'0'%20y1%3D'0'%20x2%3D'0'%20y2%3D'1'%3E%3Cstop%20offset%3D'0%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.10'%2F%3E%3Cstop%20offset%3D'38%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.04'%2F%3E%3Cstop%20offset%3D'62%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.06'%2F%3E%3Cstop%20offset%3D'100%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.16'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'1400'%20height%3D'420'%20fill%3D'%23452b14'%2F%3E%3Cg%20filter%3D'url(%23w)'%3E%3Crect%20x%3D'-120'%20y%3D'-120'%20width%3D'1640'%20height%3D'660'%20fill%3D'url(%23r)'%2F%3E%3C%2Fg%3E%3Crect%20width%3D'1400'%20height%3D'420'%20filter%3D'url(%23f)'%20opacity%3D'.10'%2F%3E%3Crect%20width%3D'1400'%20height%3D'420'%20fill%3D'url(%23s)'%2F%3E%3C%2Fsvg%3E");
+  --post-wood:   url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'420'%20height%3D'1400'%20viewBox%3D'0%200%20420%201400'%3E%3Cdefs%3E%3Cfilter%20id%3D'w'%20x%3D'-20%25'%20y%3D'-20%25'%20width%3D'140%25'%20height%3D'140%25'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.0050%200.009'%20numOctaves%3D'4'%20seed%3D'23'%20result%3D't'%2F%3E%3CfeDisplacementMap%20in%3D'SourceGraphic'%20in2%3D't'%20scale%3D'22'%20xChannelSelector%3D'R'%20yChannelSelector%3D'G'%2F%3E%3C%2Ffilter%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'1.2%200.02'%20numOctaves%3D'2'%20seed%3D'27'%2F%3E%3CfeColorMatrix%20type%3D'saturate'%20values%3D'0'%2F%3E%3C%2Ffilter%3E%3ClinearGradient%20id%3D'r'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'0.03'%3E%3Cstop%20offset%3D'0.00%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'2.89%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'2.89%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'3.56%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'3.56%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'6.31%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'6.78%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'6.78%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'8.44%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'8.44%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'8.80%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'8.80%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'12.54%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'12.54%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'13.07%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'13.07%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'14.84%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'14.84%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'15.55%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'15.55%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'19.53%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'19.53%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'19.84%25'%20stop-color%3D'%23221408'%2F%3E%3Cstop%20offset%3D'19.84%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.41%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'23.41%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.87%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'23.87%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'25.66%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'25.66%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'26.25%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'26.25%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'28.36%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'28.36%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'28.60%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'28.60%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'30.90%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'30.90%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'31.46%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'31.46%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'35.32%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'35.32%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'35.98%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'35.98%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'38.59%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'38.59%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'38.98%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'38.98%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'40.09%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'40.09%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'40.78%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'40.78%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'44.19%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'44.19%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'44.42%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'44.42%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'47.41%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'47.41%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'47.95%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'47.95%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'50.33%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'50.33%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'50.81%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'50.81%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'53.96%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'53.96%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'54.36%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'54.36%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'56.46%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'56.46%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'57.10%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'57.10%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'61.07%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'61.07%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'61.58%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'61.58%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'64.26%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'64.26%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'64.79%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'64.79%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'66.27%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'66.27%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'66.55%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'66.55%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'69.46%25'%20stop-color%3D'%234d3119'%2F%3E%3Cstop%20offset%3D'69.46%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'70.14%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'70.14%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'73.06%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'73.06%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'73.44%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'73.44%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'74.61%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'74.61%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'75.21%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'75.21%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.02%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'77.02%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'77.74%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'77.74%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'79.52%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'79.52%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'79.77%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'79.77%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'83.55%25'%20stop-color%3D'%23412812'%2F%3E%3Cstop%20offset%3D'83.55%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'84.21%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'84.21%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'87.39%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'87.39%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'87.67%25'%20stop-color%3D'%232c1c0d'%2F%3E%3Cstop%20offset%3D'87.67%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'91.60%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'91.60%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'92.33%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'92.33%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'95.92%25'%20stop-color%3D'%235c3c1d'%2F%3E%3Cstop%20offset%3D'95.92%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'96.50%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'96.50%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'99.36%25'%20stop-color%3D'%23573818'%2F%3E%3Cstop%20offset%3D'99.36%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'99.91%25'%20stop-color%3D'%2333200f'%2F%3E%3Cstop%20offset%3D'99.91%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%23452b14'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%2326170a'%2F%3E%3Cstop%20offset%3D'100.00%25'%20stop-color%3D'%2326170a'%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D's'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'0'%3E%3Cstop%20offset%3D'0%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.10'%2F%3E%3Cstop%20offset%3D'38%25'%20stop-color%3D'%23ffdca8'%20stop-opacity%3D'.04'%2F%3E%3Cstop%20offset%3D'62%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.06'%2F%3E%3Cstop%20offset%3D'100%25'%20stop-color%3D'%23000'%20stop-opacity%3D'.16'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'420'%20height%3D'1400'%20fill%3D'%23452b14'%2F%3E%3Cg%20filter%3D'url(%23w)'%3E%3Crect%20x%3D'-120'%20y%3D'-120'%20width%3D'660'%20height%3D'1640'%20fill%3D'url(%23r)'%2F%3E%3C%2Fg%3E%3Crect%20width%3D'420'%20height%3D'1400'%20filter%3D'url(%23f)'%20opacity%3D'.10'%2F%3E%3Crect%20width%3D'420'%20height%3D'1400'%20fill%3D'url(%23s)'%2F%3E%3C%2Fsvg%3E");
+  --inlay:       rgba(0,0,0,.30);        /* утопленные поля: поиск, чипсы, селекты */
+  --inlay-hi:    rgba(255,228,180,.08);  /* блик по верхней кромке */
+  --plate:       rgba(0,0,0,.30);        /* затенение латунной таблички */
+  --grain-op:    .30;
+  --noise-op:    .04;
+  --lift:        0 24px 44px -20px rgba(0,0,0,.85);
+
+  --grain-h:     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.62' numOctaves='4' seed='7'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23g)'/%3E%3C/svg%3E");
+  --grain-v:     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62 0.012' numOctaves='4' seed='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23g)'/%3E%3C/svg%3E");
+  --noise:       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+
+  --display:     "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --book:        "EB Garamond", "Iowan Old Style", Georgia, serif;
+  --ui:          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono:        ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+
+/* --- дневная библиотека: та же комната, свечи погашены, солнце в окне --- */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --wall-1:    #ddd3c4;
+    --wall-2:    #c9bda9;
+    --floor:     #b8a184;
+    --oak-1:     #6b4526;
+    --oak-2:     #3d2614;
+    --oak-3:     #241505;
+    --board-1:   #5a3819;
+    --board-2:   #2a180d;
+    --back:      #150c05;
+    --brass:     #7a5a18;
+    --brass-dim: #8a6a24;
+    --parch:     #f6edd7;
+    --parch-2:   #eadfc2;
+    --ink:       #2a1f12;
+    --ink-2:     #4a3520;
+    --ink-3:     #6d5531;
+    --hair:      rgba(107,79,20,.30);
+    --hair-soft: rgba(107,79,20,.15);
+    --candle:    rgba(255,214,150,.22);
+    --shaft:     rgba(255,249,226,.34);
+    --mote:      rgba(255,252,236,.85);
+    --vignette:  rgba(70,56,36,.34);
+    --glow-warm: rgba(255,250,236,.70);
+    --green:     #406b45;
+    --wine:      #8f2f33;
+    --inlay:     rgba(255,249,233,.62);
+    --inlay-hi:  rgba(255,255,255,.55);
+    --plate:     rgba(255,247,224,.30);
+    --inlay:   rgba(255,249,233,.62);
+  --inlay-hi:  rgba(255,255,255,.55);
+  --plate:   rgba(255,247,224,.30);
+  --grain-op:  .24;
+    --noise-op:  .05;
+    --lift:      0 20px 38px -20px rgba(70,52,28,.45);
+  }
+}
+:root[data-theme="light"] {
+  --wall-1:    #ddd3c4;
+  --wall-2:    #c9bda9;
+  --floor:     #b8a184;
+  --oak-1:     #6b4526;
+  --oak-2:     #3d2614;
+  --oak-3:     #241505;
+  --board-1:   #5a3819;
+  --board-2:   #2a180d;
+  --back:      #150c05;
+  --brass:     #7a5a18;
+  --brass-dim: #8a6a24;
+  --parch:     #f6edd7;
+  --parch-2:   #eadfc2;
+  --ink:       #2a1f12;
+  --ink-2:     #4a3520;
+  --ink-3:     #6d5531;
+  --hair:      rgba(107,79,20,.30);
+  --hair-soft: rgba(107,79,20,.15);
+  --candle:    rgba(255,214,150,.22);
+  --shaft:     rgba(255,249,226,.34);
+  --mote:      rgba(255,252,236,.85);
+  --vignette:  rgba(70,56,36,.34);
+  --glow-warm: rgba(255,250,236,.70);
+  --green:     #406b45;
+  --wine:      #8f2f33;
+  --inlay:     rgba(255,249,233,.62);
+  --inlay-hi:  rgba(255,255,255,.55);
+  --plate:     rgba(255,247,224,.30);
+  --inlay:   rgba(255,249,233,.62);
+  --inlay-hi:  rgba(255,255,255,.55);
+  --plate:   rgba(255,247,224,.30);
+  --grain-op:  .24;
+  --noise-op:  .05;
+  --lift:      0 20px 38px -20px rgba(70,52,28,.45);
+}
+
+* { box-sizing: border-box; }
+
+/* Атрибут hidden проигрывает любому явному display, а у .filters и .stats
+   он есть. Без этого правила вишлист показывал фильтры каталога. */
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; height: 100%; }
+
+/* ---------- Комната ---------- */
+
+body {
+  margin: 0; min-height: 100%;
+  color: var(--ink);
+  font-family: var(--ui); font-size: 16px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--wall-1);
+  /* стеновые панели с фасками, пол внизу, тёплый свет сверху, виньетка */
+  background-image:
+    radial-gradient(1200px 700px at 24% -12%, var(--glow-warm), transparent 62%),
+    radial-gradient(900px 500px at 50% 22%, var(--candle), transparent 64%),
+    radial-gradient(160% 120% at 50% 26%, transparent 32%, var(--vignette) 100%),
+    linear-gradient(180deg, transparent 0 66%, var(--floor) 100%),
+    repeating-linear-gradient(90deg,
+      rgba(255,226,180,.07) 0 2px,
+      transparent 2px 120px,
+      var(--wall-2) 120px 125px,
+      rgba(0,0,0,.30) 125px 128px);
+  background-attachment: fixed;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+}
+
+/* Текстура дерева на стене, луч света с пылинками, зерно. */
+body::before, body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+}
+/* Текстура: волокно дерева и мелкое зерно, оба приглушённые. */
+body::before {
+  background-image: var(--noise), var(--grain-v);
+  background-size: 160px 160px, 420px 420px;
+  opacity: var(--grain-op);
+  mix-blend-mode: soft-light;
+}
+body::after {
+  background-image:
+    linear-gradient(103deg, transparent 5%, var(--shaft) 12%, transparent 26%),
+    linear-gradient(103deg, transparent 23%, var(--shaft) 27%, transparent 40%),
+    radial-gradient(1.7px 1.7px at 13% 24%, var(--mote), transparent),
+    radial-gradient(1.3px 1.3px at 18% 62%, var(--mote), transparent),
+    radial-gradient(2px   2px   at 25% 39%, var(--mote), transparent),
+    radial-gradient(1.4px 1.4px at 30% 79%, var(--mote), transparent),
+    radial-gradient(1.7px 1.7px at 9%  50%, var(--mote), transparent),
+    radial-gradient(1.2px 1.2px at 34% 16%, var(--mote), transparent),
+    radial-gradient(1.8px 1.8px at 21% 88%, var(--mote), transparent);
+}
+
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 16px; }
+
+/* ---------- Шапка: дубовый карниз с латунной кромкой ---------- */
+
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
+  background-color: var(--oak-3);
+  background-image:
+    linear-gradient(180deg, rgba(255,214,150,.13), rgba(0,0,0,.22) 34%, rgba(0,0,0,.5)),
+    var(--board-wood);
+  background-size: auto, 560px 200px;
+  background-repeat: no-repeat, repeat;
+  border-bottom: 2px solid var(--brass-dim);
+  box-shadow: 0 10px 26px -12px rgba(0,0,0,.8);
+}
+.header-row {
+  display: flex; align-items: center; gap: 14px;
+  padding-block: 12px; flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: baseline; gap: 11px; margin-right: auto; min-width: 0; }
+.brand h1 {
+  font-family: var(--display); font-size: 31px; font-weight: 600;
+  letter-spacing: .01em; margin: 0; white-space: nowrap; color: var(--on-wood);
+  text-shadow: 0 2px 3px rgba(0,0,0,.75), 0 -1px 0 rgba(255,228,180,.18);
+}
+.brand .count {
+  font-size: 13px; color: var(--on-wood-2); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* Поиск: утопленная в дерево прорезь */
+.search { position: relative; flex: 1 1 320px; min-width: 200px; max-width: 520px; }
+.search input {
+  width: 100%; height: 42px; padding: 0 40px;
+  border: 1px solid rgba(0,0,0,.55); border-radius: 3px;
+  background: var(--inlay); color: var(--ink);
+  font: inherit; outline: none;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.34), 0 1px 0 var(--inlay-hi);
+  transition: box-shadow .15s, border-color .15s;
+}
+.search input:focus {
+  border-color: var(--brass);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.34), 0 0 0 2px var(--hair);
+}
+.search input::placeholder { color: var(--ink-3); }
+.search .icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--brass-dim); pointer-events: none; display: flex; }
+.search kbd {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  font: 500 11px/1 var(--mono); color: var(--ink-3);
+  border: 1px solid var(--hair); border-radius: 3px; padding: 4px 6px;
+}
+.search input:not(:placeholder-shown) ~ kbd { display: none; }
+
+/* Латунные кнопки и переключатель вида */
+.icon-btn {
+  height: 42px; min-width: 42px; padding: 0 13px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  border: 1px solid var(--hair); border-radius: 3px;
+  background: linear-gradient(180deg, var(--inlay-hi), transparent), var(--inlay);
+  color: var(--ink-2); font: inherit; font-size: 13px; cursor: pointer;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.icon-btn:hover { color: var(--brass); border-color: var(--brass); }
+
+.segmented {
+  display: inline-flex; padding: 3px; gap: 2px;
+  background: var(--inlay); border: 1px solid var(--hair); border-radius: 3px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.34);
+}
+.segmented button {
+  border: 0; background: transparent; color: var(--ink-2);
+  font-family: var(--display); font-size: 16px; font-weight: 600;
+  padding: 5px 15px; border-radius: 2px; cursor: pointer; white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.segmented button[aria-pressed="true"] {
+  background: linear-gradient(180deg, var(--brass), var(--brass-dim));
+  color: #1b1206;
+  box-shadow: 0 1px 0 rgba(255,240,205,.45) inset, 0 2px 5px rgba(0,0,0,.4);
+}
+
+/* ---------- Фильтры: латунные бирки ---------- */
+
+.filters { padding-bottom: 11px; display: flex; flex-direction: column; gap: 10px; }
+
+.chips { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
+.chips::-webkit-scrollbar { height: 5px; }
+.chips::-webkit-scrollbar-thumb { background: var(--brass-dim); border-radius: 99px; }
+
+.chip {
+  flex: 0 0 auto; cursor: pointer; white-space: nowrap;
+  border: 1px solid var(--hair); border-radius: 2px;
+  background: linear-gradient(180deg, var(--inlay-hi), transparent), var(--inlay);
+  color: var(--ink-2);
+  font-family: var(--book); font-size: 15px; padding: 6px 14px;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.chip:hover { color: var(--brass); border-color: var(--brass); }
+.chip[aria-pressed="true"] {
+  background: linear-gradient(180deg, var(--brass), var(--brass-dim));
+  border-color: var(--brass); color: #1b1206;
+  box-shadow: 0 1px 0 rgba(255,240,200,.4) inset;
+}
+.chip .n { opacity: .62; margin-left: 6px; font-variant-numeric: tabular-nums; }
+.chip-warn { border-color: var(--wine); color: var(--wine); }
+.chip-warn[aria-pressed="true"] {
+  background: linear-gradient(180deg, var(--wine), rgba(0,0,0,.4));
+  border-color: var(--wine); color: #fbeedd;
+}
+
+.selects { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.selects select {
+  height: 40px; padding: 0 32px 0 12px;
+  border: 1px solid var(--hair); border-radius: 2px;
+  background-color: var(--inlay); color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a4884e' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center;
+  font: inherit; font-size: 14px; appearance: none; cursor: pointer;
+}
+.selects select:focus { outline: 2px solid var(--brass); outline-offset: 1px; }
+.reset {
+  border: 0; background: none; color: var(--brass); cursor: pointer;
+  font-family: var(--book); font-size: 15px; padding: 8px 4px;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.cell-note {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--book); font-size: 14px; color: var(--brass);
+  border: 1px solid var(--hair); border-radius: 2px; padding: 4px 12px;
+}
+
+/* ---------- Табличка со счётчиками: одна латунная пластина ---------- */
+
+.stats {
+  display: flex; flex-wrap: wrap; align-items: stretch;
+  margin: 11px 0 8px;
+  border: 1px solid var(--brass-dim); border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(255,232,186,.16), var(--plate)),
+    linear-gradient(180deg, var(--oak-2), var(--oak-3));
+  box-shadow: var(--lift), inset 0 1px 0 rgba(255,236,200,.22);
+  overflow: hidden;
+}
+.stat {
+  flex: 1 1 130px; padding: 9px 18px;
+  border-right: 1px solid var(--hair-soft);
+  display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
+}
+.stat:last-child { border-right: 0; }
+.stat .v {
+  font-family: var(--display); font-weight: 700; font-size: 27px; line-height: 1;
+  color: var(--on-wood); font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7);
+}
+.stat .l {
+  font-size: 11px; color: var(--on-wood-2);
+  text-transform: uppercase; letter-spacing: .12em;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+/* ---------- Парящие свечи ---------- */
+
+.candles { position: relative; height: 72px; pointer-events: none; }
+.candles.is-tight { height: clamp(26px, 3.6vh, 54px); }
+.candles.is-tight i { animation-duration: 8s; }
+.candles i {
+  position: absolute; bottom: 2px; left: var(--x);
+  width: 8px; height: var(--h, 24px); border-radius: 2px 2px 1px 1px;
+  background: linear-gradient(180deg,#f6ecd4,#cbb183 70%,#a98f62);
+  box-shadow: 0 0 28px 11px var(--candle), 0 0 80px 30px var(--candle),
+              0 2px 4px rgba(0,0,0,.5);
+  animation: candle-bob 7s ease-in-out infinite var(--d);
+}
+.candles i::before {
+  content: ""; position: absolute; left: 50%; bottom: 100%; margin-left: -4px;
+  width: 9px; height: 15px; border-radius: 50% 50% 42% 42%;
+  background: radial-gradient(56% 66% at 50% 76%, #fffbef, #ffcb63 50%, rgba(255,148,36,0));
+  animation: candle-flame 2.6s ease-in-out infinite var(--d);
+}
+@keyframes candle-bob   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes candle-flame { 0%,100% { transform: scale(1);            opacity: 1; }
+                          45%     { transform: scaleY(1.24) scaleX(.86); opacity: .88; } }
+
+/* ---------- Стеллаж ---------- */
+
+.wall-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 6px; }
+.wall-scroll::-webkit-scrollbar { height: 8px; }
+.wall-scroll::-webkit-scrollbar-thumb { background: var(--oak-2); border-radius: 99px; }
+
+.wall {
+  display: grid; grid-template-columns: repeat(var(--cols, 4), 1fr);
+  gap: 7px; padding: 12px;
+  /* «Крупно»: стеллаж шире экрана, но прокрутка одна на всю стенку,
+     а не по одной в каждой из 21 ячейки. Конкретную ширину ставит
+     renderWall по самой полной полке текущей выборки. */
+  min-width: 900px;
+  border-radius: 3px;
+  background-color: var(--oak-2);
+  background-image:
+    linear-gradient(180deg, rgba(255,214,150,.18), transparent 10%, rgba(0,0,0,.34)),
+    var(--post-wood);
+  background-size: auto, 200px 560px;
+  background-repeat: no-repeat, repeat;
+  box-shadow:
+    var(--lift),
+    inset 0 2px 0 rgba(255,232,196,.26),
+    inset 0 0 0 1px rgba(0,0,0,.45);
+}
+
+/* Ячейка: тёмная задняя стенка, книги на доске, торец доски снизу. */
+.wall-cell {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border-radius: 1px; overflow: hidden;
+  background-color: var(--back);
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.88), rgba(0,0,0,.62) 46%, rgba(0,0,0,.8)),
+    var(--post-wood);
+  background-size: auto, 200px 560px;
+  background-repeat: no-repeat, repeat;
+  box-shadow: inset 0 18px 26px -10px rgba(0,0,0,.92),
+              inset 0 0 44px rgba(0,0,0,.6),
+              inset 0 0 0 1px rgba(0,0,0,.55);
+}
+.wall-cell.is-blank { opacity: .55; }
+
+.wc-shelf {
+  flex: 0 0 auto; display: flex; align-items: flex-end; gap: 2px;
+  padding: 14px 10px 0; height: 218px; box-sizing: border-box;
+  overflow: hidden;
+}
+
+.wc-spine {
+  position: relative; flex: 0 0 auto; border: 0; cursor: pointer;
+  font: inherit; color: #fff; padding: 10px 0 9px; border-radius: 2px 2px 0 0;
+  width: var(--w);
+  /* Округлость корешка: тень по краям, блик по центру. Плюс тень на соседа справа. */
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.52) 0%, rgba(0,0,0,.16) 13%,
+      rgba(255,255,255,.13) 40%, rgba(255,255,255,.05) 58%,
+      rgba(0,0,0,.16) 82%, rgba(0,0,0,.48) 100%),
+    var(--c1);
+  display: flex; align-items: flex-start; justify-content: center; overflow: hidden;
+  transform-origin: bottom center;
+  box-shadow: 3px 0 6px -2px rgba(0,0,0,.6), 0 3px 4px -1px rgba(0,0,0,.55);
+  transition: transform .16s cubic-bezier(.2,.7,.3,1), filter .16s;
+}
+/* Торец книжного блока сверху и золотая полоса тиснения. */
+.wc-spine::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  background: linear-gradient(180deg, rgba(246,238,214,.92), rgba(190,176,142,.55));
+  box-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+.wc-spine::after {
+  content: ""; position: absolute; left: 20%; right: 20%; bottom: 7px; height: 1px;
+  background: rgba(255,225,165,.5);
+}
+.wc-spine:hover, .wc-spine:focus-visible { transform: translateY(-10px); filter: brightness(1.16); outline: none; }
+.wc-spine:focus-visible { box-shadow: 0 0 0 2px var(--brass); }
+.wc-spine .t {
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-family: var(--book); font-size: 12.5px; font-weight: 600; line-height: 1.05;
+  max-height: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  text-shadow: 0 1px 1px rgba(0,0,0,.9), 0 0 4px rgba(0,0,0,.6);
+  padding-top: 6px;
+}
+
+/* «Вся стенка», режим по умолчанию: все 24 ячейки видны целиком.
+   Корешки ужимаются до ширины экрана, названия уходят - 532 книги
+   требуют 10 600px линейной полки при читаемом кегле. Полка ниже,
+   чтобы в окно влезали и все шесть рядов, а не только два.
+   Название книги под курсором показывает всплывающая подсказка. */
+.wall.is-fit { min-width: 0 !important; gap: 5px; padding: 8px; }
+.wall.is-fit .wc-spine { width: auto; flex: 1 1 0; min-width: 2px; cursor: pointer; }
+.wall.is-fit .wc-spine .t { display: none; }
+.wall.is-fit .wc-spine::before { height: 2px; }
+/* Высота полки выводится из окна так, чтобы все шесть рядов легли
+   под шапку: 16vh минус постоянная часть (шапка, табличка, свечи,
+   торцы полок и зазоры). На большом мониторе ряды разжимаются. */
+.wall.is-fit .wc-shelf { height: clamp(46px, calc(16vh - 68px), 150px); padding: 7px 7px 0; }
+.wall.is-fit .wc-foot { padding: 4px 8px; }
+.wall.is-fit .wc-id { font-size: 11.5px; }
+.wall.is-fit .wc-n { font-size: 10px; }
+.wall.is-fit .wc-spine:hover { transform: translateY(-5px); }
+
+/* В обзорном режиме свечи и табличка занимают меньше высоты. */
+.wall.is-fit-scope .candles { height: 48px; }
+
+/* Торец полки: по нему выгравирован номер ячейки. */
+.wc-foot {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
+  padding: 8px 10px;
+  background-color: var(--board-2);
+  background-image:
+    linear-gradient(180deg, rgba(255,216,160,.30), rgba(0,0,0,.18) 42%, rgba(0,0,0,.5)),
+    var(--board-wood);
+  background-size: auto, 560px 200px;
+  background-repeat: no-repeat, repeat;
+  box-shadow: 0 -4px 12px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,222,172,.42);
+}
+.wc-id {
+  border: 0; background: none; cursor: pointer; padding: 0;
+  font: 700 13px/1 var(--mono); letter-spacing: .06em; color: #f2dcae;
+  text-shadow: 0 1px 2px rgba(0,0,0,.85);
+}
+.wc-id:hover { color: #fff3d6; }
+.wall-cell.is-blank .wc-id { pointer-events: none; opacity: .6; }
+.wc-n { font-size: 11.5px; color: rgba(242,220,174,.72); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; }
+
+/* ---------- Вид «Полка» ---------- */
+
+.shelf-group { margin-bottom: 36px; }
+.shelf-head { display: flex; align-items: baseline; gap: 11px; margin-bottom: 10px; }
+.shelf-head h3 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; color: var(--on-wood); }
+.shelf-head span { font-size: 13px; color: var(--on-wood-2); }
+.shelf {
+  display: flex; align-items: flex-end; gap: 3px;
+  padding: 28px 18px 0; overflow-x: auto; min-height: 240px;
+  border-radius: 3px 3px 0 0;
+  background-color: var(--back);
+  background-image: linear-gradient(180deg, rgba(0,0,0,.86), rgba(0,0,0,.66) 150px), var(--post-wood);
+  background-size: auto, 200px 560px;
+  background-repeat: no-repeat, repeat;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.7), inset 0 0 0 1px rgba(0,0,0,.55);
+}
+.shelf::-webkit-scrollbar { height: 7px; }
+.shelf::-webkit-scrollbar-thumb { background: var(--oak-3); border-radius: 99px; }
+.shelf-board {
+  height: 16px; border-radius: 0 0 3px 3px;
+  background-color: var(--board-2);
+  background-image: linear-gradient(180deg, rgba(255,216,160,.30), rgba(0,0,0,.2) 42%, rgba(0,0,0,.5)), var(--board-wood);
+  background-size: auto, 560px 200px;
+  background-repeat: no-repeat, repeat;
+  box-shadow: var(--lift), inset 0 1px 0 rgba(255,222,172,.42);
+}
+.spine {
+  position: relative; flex: 0 0 auto; border: 0; padding: 13px 0 11px;
+  cursor: pointer; border-radius: 3px 3px 1px 1px;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.5) 0%, rgba(0,0,0,.14) 12%,
+      rgba(255,255,255,.14) 40%, rgba(255,255,255,.05) 60%,
+      rgba(0,0,0,.14) 84%, rgba(0,0,0,.46) 100%),
+    var(--c1);
+  color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  transform-origin: bottom center;
+  box-shadow: 4px 0 8px -3px rgba(0,0,0,.6), 0 4px 6px -2px rgba(0,0,0,.55);
+  transition: transform .18s cubic-bezier(.2,.7,.3,1), filter .18s;
+}
+.spine::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
+  background: linear-gradient(180deg, rgba(246,238,214,.92), rgba(190,176,142,.5));
+  box-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+.spine:hover, .spine:focus-visible { transform: translateY(-15px); filter: brightness(1.14); outline: none; }
+.spine:focus-visible { box-shadow: 0 0 0 2px var(--brass); }
+.spine .s-title {
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-family: var(--book); font-size: 13.5px; font-weight: 600; line-height: 1.1;
+  max-height: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  text-shadow: 0 1px 1px rgba(0,0,0,.9), 0 0 4px rgba(0,0,0,.55);
+}
+.spine .s-mark { width: 58%; height: 2px; background: rgba(255,225,165,.5); border-radius: 2px; margin-top: 8px; }
+
+/* ---------- Обложки ---------- */
+
+.cover {
+  position: relative; aspect-ratio: 2/3; width: 100%; max-width: 100%;
+  border-radius: 2px 6px 6px 2px; overflow: hidden;
+  background: var(--c1); color: #fff;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 14px 13px 13px 18px; isolation: isolate;
+  box-shadow: var(--lift), inset 0 0 0 1px rgba(0,0,0,.4);
+}
+.cover::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: linear-gradient(145deg, var(--c1), var(--c2));
+}
+.cover::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.42) 0 7px, rgba(255,228,170,.22) 7px 9px, transparent 9px 15px),
+    linear-gradient(180deg, transparent 0 9px, rgba(255,228,170,.3) 9px 10px, transparent 10px),
+    linear-gradient(0deg,   transparent 0 9px, rgba(255,228,170,.3) 9px 10px, transparent 10px),
+    radial-gradient(120% 80% at 78% 0%, rgba(255,240,210,.16), transparent 62%);
+}
+.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.cover .c-title {
+  font-family: var(--book); font-size: 17px; line-height: 1.18;
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+.cover .c-author {
+  font-size: 10px; letter-spacing: .13em; text-transform: uppercase; opacity: .84;
+  border-top: 1px solid rgba(255,228,170,.34); padding-top: 8px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* Маленькая обложка для вишлиста: 62px это ширина корешка, а не обложки.
+   Поля и кегль большой обложки рассчитаны на 148px, поэтому здесь вместо
+   обрезанного названия стоят инициалы автора, а тиснение переплёта
+   ужато пропорционально. */
+.cover-mini {
+  padding: 0; align-items: center; justify-content: center;
+  border-radius: 1px 4px 4px 1px;
+}
+.cover-mini::after {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.42) 0 4px, rgba(255,228,170,.22) 4px 5px, transparent 5px 9px),
+    linear-gradient(180deg, transparent 0 5px, rgba(255,228,170,.28) 5px 6px, transparent 6px),
+    linear-gradient(0deg,   transparent 0 5px, rgba(255,228,170,.28) 5px 6px, transparent 6px),
+    radial-gradient(120% 80% at 78% 0%, rgba(255,240,210,.16), transparent 62%);
+}
+.cover-mini .c-mono {
+  font-family: var(--book); font-size: 20px; font-weight: 600;
+  letter-spacing: .05em; color: rgba(255,234,196,.94);
+  text-shadow: 0 1px 3px rgba(0,0,0,.55);
+  padding-left: 7px;   /* сдвиг от тёмной полосы переплёта слева */
+  line-height: 1;
+}
+
+.grid { display: grid; gap: 28px 18px; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
+.card { cursor: pointer; border: 0; background: none; padding: 0; text-align: left; font: inherit; color: inherit; }
+.card .cover { transition: transform .22s cubic-bezier(.2,.7,.3,1); }
+.card:hover .cover, .card:focus-visible .cover { transform: translateY(-7px) rotate(-.6deg); }
+.card:focus-visible { outline: none; }
+.card:focus-visible .cover { outline: 2px solid var(--brass); outline-offset: 3px; }
+.card .m-title {
+  font-family: var(--book); font-size: 15px; font-weight: 600; margin-top: 11px; line-height: 1.25;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card .m-author { font-size: 12px; color: var(--ink-3); margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card .m-meta { font-size: 11px; color: var(--ink-3); margin-top: 5px; display: flex; gap: 7px; align-items: center; }
+
+.dot { width: 6px; height: 6px; border-radius: 50%; flex: 0 0 auto; }
+.dot.read { background: var(--green); }
+.dot.reading { background: var(--brass); }
+.dot.unread { background: var(--ink-3); opacity: .5; }
+
+/* ---------- Список ---------- */
+
+.table-wrap {
+  border: 1px solid var(--hair); border-radius: 3px; overflow: hidden;
+  background-color: var(--parch-2);
+  box-shadow: var(--lift);
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-family: var(--book); }
+thead th {
+  text-align: left; font-family: var(--ui); font-weight: 600; font-size: 10.5px;
+  letter-spacing: .12em; text-transform: uppercase; color: #f2dcae;
+  padding: 12px 16px; white-space: nowrap;
+  background-image: linear-gradient(180deg, rgba(255,216,160,.22), rgba(0,0,0,.35)), var(--board-wood);
+  background-size: auto, 560px 200px;
+  box-shadow: inset 0 1px 0 rgba(255,222,172,.35);
+}
+tbody tr { border-bottom: 1px solid var(--hair-soft); cursor: pointer; }
+tbody tr:last-child { border-bottom: 0; }
+tbody tr:hover { background: rgba(201,161,74,.09); }
+tbody td { padding: 9px 14px; vertical-align: middle; }
+tbody td.t { font-weight: 600; }
+tbody td.dim { color: var(--ink-3); }
+.tag {
+  display: inline-block; font-family: var(--ui); font-size: 10.5px;
+  padding: 2.5px 8px; border: 1px solid var(--hair); border-radius: 2px;
+  color: var(--brass); margin-right: 4px; white-space: nowrap;
+}
+
+/* ---------- Карточка книги ---------- */
+
+dialog#detail { border: 0; padding: 0; background: transparent;
+  max-width: 740px; width: calc(100% - 32px); color: var(--ink); }
+dialog#detail::backdrop { background: rgba(8,5,2,.72); backdrop-filter: blur(3px); }
+.sheet {
+  border: 1px solid var(--brass-dim); border-radius: 3px; overflow: hidden;
+  background-color: var(--parch);
+  background-image: linear-gradient(180deg, rgba(255,232,190,.07), transparent 40%), var(--grain-v);
+  background-size: auto, 420px 420px;
+  background-blend-mode: normal, soft-light;
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,236,200,.2);
+}
+.sheet-body { display: grid; grid-template-columns: 186px 1fr; gap: 26px; padding: 28px; }
+.sheet h2 { font-family: var(--display); font-weight: 600; font-size: 34px; line-height: 1.12;
+  margin: 0 0 4px; color: var(--brass); text-wrap: balance; }
+.sheet .author { font-family: var(--book); color: var(--ink-2); font-size: 16px; margin-bottom: 18px; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px;
+  font-family: var(--book); font-size: 15px; margin-top: 4px; }
+.kv dt { color: var(--ink-3); font-family: var(--ui); font-size: 11px;
+  text-transform: uppercase; letter-spacing: .09em; align-self: center; }
+.kv dd { margin: 0; }
+.sheet .note {
+  margin-top: 18px; padding: 12px 15px; border-left: 2px solid var(--brass);
+  background: rgba(0,0,0,.2); font-family: var(--book); font-size: 15px; color: var(--ink-2);
+}
+.sheet-foot {
+  display: flex; gap: 10px; justify-content: flex-end; align-items: center;
+  padding: 12px 20px; border-top: 1px solid var(--hair); background: rgba(0,0,0,.24);
+}
+.stars { color: var(--brass); letter-spacing: 3px; font-size: 16px; }
+
+/* ---------- Пусто и подвал ---------- */
+
+.empty { text-align: center; padding: 72px 20px; color: var(--ink-3); }
+.empty .big { font-family: var(--display); font-weight: 600; font-size: 30px; color: var(--brass); margin-bottom: 6px; }
+
+footer {
+  margin: 26px 0 30px; padding-top: 14px; border-top: 1px solid var(--hair-soft);
+  font-family: var(--book); font-size: 15px; color: var(--on-wood-2);
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+footer kbd { font: 500 11px/1 var(--mono); border: 1px solid var(--hair);
+  border-radius: 3px; padding: 3px 5px; }
+
+/* ---------- Телефон ---------- */
+
+@media (max-width: 720px) {
+  .brand h1 { font-size: 24px; }
+  .brand .count { display: none; }
+  .search { order: 3; flex-basis: 100%; max-width: none; }
+  .search kbd { display: none; }
+  .segmented button { font-size: 15px; padding: 5px 11px; }
+  .wall { gap: 4px; padding: 8px; min-width: 820px; }
+  .icon-btn, .search input { height: 44px; }
+  .chip { padding: 9px 14px; }
+  .wc-shelf { height: 186px; padding: 11px 7px 0; }
+  .wc-foot { padding: 6px 7px; flex-direction: column; gap: 1px; }
+  .wc-n { font-size: 9.5px; }
+  .stat { flex-basis: 50%; padding: 9px 13px; }
+  .stat .v { font-size: 23px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 22px 13px; }
+  .sheet-body { grid-template-columns: 1fr; gap: 18px; padding: 20px; }
+  .sheet-body .cover-slot { width: 136px; }
+  .sheet h2 { font-size: 28px; }
+  .hide-sm { display: none; }
+  table { font-size: 13px; }
+  tbody td, thead th { padding: 8px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Подсказки при наборе ---------- */
+
+.suggest {
+  position: absolute; z-index: 60; left: 0; right: 0; top: calc(100% + 6px);
+  max-height: 60vh; overflow-y: auto;
+  border: 1px solid var(--brass-dim); border-radius: 3px;
+  background-color: var(--parch);
+  background-image: linear-gradient(180deg, rgba(255,232,190,.06), transparent 40%);
+  box-shadow: 0 24px 48px -18px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,236,200,.18);
+}
+.sg-row {
+  display: flex; align-items: center; gap: 11px; width: 100%;
+  padding: 10px 14px; border: 0; background: none; cursor: pointer;
+  text-align: left; font: inherit; color: var(--ink);
+  border-bottom: 1px solid var(--hair-soft);
+}
+.sg-row:last-of-type { border-bottom: 0; }
+.sg-row:hover, .sg-row.is-active { background: rgba(201,161,74,.16); }
+.sg-dot {
+  flex: 0 0 auto; width: 7px; height: 30px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--c1), var(--c2));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+}
+.sg-text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.sg-title {
+  font-family: var(--book); font-size: 16px; font-weight: 600; line-height: 1.2;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sg-sub {
+  font-size: 12.5px; color: var(--ink-3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sg-empty, .sg-more {
+  padding: 12px 14px; font-family: var(--book); font-size: 14px; color: var(--ink-3);
+}
+.sg-more { border-top: 1px solid var(--hair-soft); }
+
+/* Одна найденная книга не должна раздуваться на всю полку. */
+.wall.is-fit .wc-spine { max-width: 34px; }
+
+/* ---------- Вишлист ---------- */
+
+.wish { display: flex; flex-direction: column; gap: 22px; padding-top: 18px; }
+
+.wish-form {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--brass-dim); border-radius: 3px;
+  background-color: var(--parch);
+  background-image: linear-gradient(180deg, rgba(255,232,190,.07), transparent 40%);
+  box-shadow: var(--lift), inset 0 1px 0 rgba(255,236,200,.18);
+}
+.wish-fields { display: flex; gap: 12px; flex-wrap: wrap; }
+.wish-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.wish-grow { flex: 1 1 220px; }
+.wish-field > span {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+.wish-field input, .wish-field select {
+  height: 42px; padding: 0 12px;
+  border: 1px solid var(--hair); border-radius: 2px;
+  background: var(--inlay); color: var(--ink);
+  font-family: var(--book); font-size: 16px; outline: none;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.3);
+}
+.wish-field select { appearance: none; cursor: pointer; padding-right: 30px; }
+.wish-field input:focus, .wish-field select:focus {
+  border-color: var(--brass); box-shadow: inset 0 2px 5px rgba(0,0,0,.3), 0 0 0 2px var(--hair);
+}
+.wish-field input::placeholder { color: var(--ink-3); }
+
+.wish-submit { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.wish-add {
+  height: 44px; padding: 0 22px; cursor: pointer;
+  border: 1px solid var(--brass); border-radius: 2px;
+  background: linear-gradient(180deg, var(--brass), var(--brass-dim));
+  color: #1b1206; font-family: var(--display); font-size: 17px; font-weight: 600;
+  box-shadow: 0 1px 0 rgba(255,240,200,.4) inset, 0 2px 6px rgba(0,0,0,.4);
+}
+.wish-add:hover { filter: brightness(1.08); }
+.wish-hint { font-size: 12.5px; color: var(--ink-3); }
+
+.wish-list { display: flex; flex-direction: column; gap: 12px; }
+.wish-card {
+  display: grid; grid-template-columns: 62px 1fr auto; gap: 18px; align-items: center;
+  padding: 14px 18px;
+  border: 1px solid var(--hair); border-radius: 3px;
+  background-color: var(--parch-2);
+  box-shadow: var(--lift);
+}
+.wish-cover { width: 62px; }
+.wish-body { min-width: 0; }
+.wish-body h3 {
+  margin: 0 0 3px; font-family: var(--book); font-size: 19px; font-weight: 600;
+  line-height: 1.2; text-wrap: balance;
+}
+.wish-author { font-size: 14px; color: var(--ink-2); }
+.wish-note {
+  margin: 8px 0 0; padding-left: 11px; border-left: 2px solid var(--brass-dim);
+  font-family: var(--book); font-size: 15px; color: var(--ink-2);
+}
+.wish-meta { display: flex; align-items: center; gap: 12px; margin-top: 9px; flex-wrap: wrap; }
+.wish-pri {
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  border: 1px solid currentColor; border-radius: 2px; padding: 3px 9px;
+}
+.wish-pri-soon { color: var(--brass); }
+.wish-pri-later { color: var(--ink-3); }
+.wish-pri-someday { color: var(--ink-3); opacity: .75; }
+.wish-date { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.wish-acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+@media (max-width: 720px) {
+  .wish-card { grid-template-columns: 50px 1fr; gap: 13px; }
+  .wish-cover { width: 50px; }
+  .cover-mini .c-mono { font-size: 17px; padding-left: 5px; }
+  .wish-acts { grid-column: 1 / -1; justify-content: flex-start; }
+  /* flex: 1 1 220px в колоночном флексе растит высоту, а не ширину:
+     поля вытягивались с 64px до 220px. По вертикали расти не нужно. */
+  .wish-fields { flex-direction: column; }
+  .wish-grow { flex: 0 0 auto; }
+}
